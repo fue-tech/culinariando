@@ -8,10 +8,10 @@ function header() {
         <a href="/" class="menu-item">
           <li>Início</li>
         </a>
-        <a href="/receitas" class="menu-item">
+        <a href="/receitas.html" class="menu-item">
           <li>Receitas</li>
         </a>
-        <a href="/favoritos" class="menu-item">
+        <a href="/favoritos.html" class="menu-item">
           <li>Favoritos</li>
         </a>
       </ul>
@@ -35,7 +35,7 @@ function header() {
         <div class="welcome-text">
           <p>Bem vindo,</p>
           <p>
-            realize o <a href="/cadastro">cadastro</a> ou faça o
+            realize o <a href="/cadastro.html">cadastro</a> ou faça o
             <a href="/login">login</a>
           </p>
         </div>
