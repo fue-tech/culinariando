@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+.bg-primary {
+  background-color: #f3701b;
+}
+
+.bg-secondary {
+  background-color: white;
+}
+
+.bg-tertiary {
+  background-color: #472410;
+}
+
+.bg-quaternary {
+  background-color: black;
+}
+
+.text-primary {
+  color: #f3701b;
+}
+
+.text-secondary {
+  color: white;
+}
+
+.text-tertiary {
+  color: #472410;
+}
+
+.text-quaternary {
+  color: black;
+}

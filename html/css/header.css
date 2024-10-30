@@ -1,0 +1,68 @@
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4.5rem;
+  width: 100%;
+}
+
+.menu-itens {
+  display: flex;
+  list-style: none;
+  height: 100%;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 0 20px;
+  height: 100%;
+  color: white;
+  text-decoration: none;
+}
+
+.menu-item:hover {
+  background-color: rgba(71, 36, 16, 0.25);
+  color: #472410;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.logo {
+  max-width: 300px;
+  font-weight: 700;
+  color: #472410;
+  text-transform: uppercase;
+  padding: 0 20px;
+}
+
+.logo-wrapper {
+  height: auto;
+}
+
+.welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-text {
+  font-size: 12px;
+  color: white;
+  padding: 0 10px;
+}
+
+.welcome-text > p > a {
+  color: white;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+@media screen and (min-width: 768px) {
+  .menu-item {
+    font-size: 16px;
+  }
+}
