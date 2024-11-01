@@ -36,9 +36,15 @@
 
 .carousel-wrapper {
   display: grid;
+  position: relative;
   width: 100%;
   overflow: hidden;
   scroll-snap-align: center;
+  margin-bottom: 30px;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .carousel-title {
@@ -57,17 +63,17 @@
   gap: 30px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  position: relative;
 }
 
 .carousel-shadow {
   display: flex;
   justify-content: center;
   align-items: center;
-  top: 0;
-  position: fixed;
+  top: 40px;
+  position: absolute;
   height: 100%;
   width: 100px;
+  z-index: 99;
 }
 
 .carousel-shadow.left {

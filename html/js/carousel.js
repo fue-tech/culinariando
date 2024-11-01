@@ -1,8 +1,9 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const controls = document.querySelectorAll(".control");
-  let currentCard = 0;
-  const cards = document.querySelectorAll(".card-wrapper");
+function initializeCarousel(carouselWrapper) {
+  const controls = carouselWrapper.querySelectorAll(".control");
+  const carousel = carouselWrapper.querySelector(".carousel");
+  const cards = carouselWrapper.querySelectorAll(".card-wrapper");
   const maxCards = cards.length;
+  let currentCard = 0;
 
   function slide(e) {
     const isLeft = e.target.closest(".left");
@@ -26,6 +27,15 @@ document.addEventListener("DOMContentLoaded", function () {
     cards[currentCard].scrollIntoView({
       behavior: "smooth",
       inline: "center",
+      block: "nearest",
+    });
+
+    const cardWidth = cards[currentCard].offsetWidth;
+    const scrollPosition = currentCard * cardWidth;
+
+    carousel.scrollTo({
+      left: scrollPosition,
+      behavior: "smooth",
     });
 
     cards[currentCard].classList.add("current-card");
@@ -34,4 +44,10 @@ document.addEventListener("DOMContentLoaded", function () {
   controls.forEach((control) => {
     control.addEventListener("click", slide);
   });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Inicialize cada carrossel individualmente passando o contêiner de cada um
+  const carousels = document.querySelectorAll(".carousel-wrapper");
+  carousels.forEach((carousel) => initializeCarousel(carousel));
 });
