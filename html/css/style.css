@@ -5,6 +5,14 @@
   font-family: "Inter", sans-serif;
 }
 
+button {
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 .bg-primary {
   background-color: #f3701b;
 }

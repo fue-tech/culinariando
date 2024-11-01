@@ -4,24 +4,161 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Culinariando</title>
+    <script src="./html/js/carousel.js"></script>
+    <script src="./html/js/components/header.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="./html/css/style.css" />
     <link rel="stylesheet" href="./html/css/header.css" />
     <link rel="stylesheet" href="./html/css/card.css" />
-    <script src="./html/js/components/header.js" defer></script>
+    <link rel="stylesheet" href="./html/css/home.css" />
   </head>
   <body>
-    <div class="card-wrapper">
-      <img src="https://picsum.photos/1920/1080" class="card-img" />
-      <div class="card-footer">
-        <p class="card-title">Receita</p>
-        <p class="card-category">Categoria - Dificuldade</p>
-      </div>
+    <nav id="nav"></nav>
+    <div class="container">
+      <section class="search-wrapper">
+        <svg
+          width="25px"
+          height="25px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16.6725 16.6412L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
+            stroke="#000000"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <input
+          type="text"
+          class="search"
+          id="search"
+          placeholder="O que você está procurando?"
+        />
+      </section>
+      <section class="carousel-wrapper">
+        <h1 class="carousel-title text-tertiary">Populares</h1>
+        <div class="carousel">
+          <button class="carousel-shadow left control">
+            <svg
+              width="70px"
+              height="70px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14.5 17L9.5 12L14.5 7"
+                stroke="#000000"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <!-- CARD -->
+          <div class="card-wrapper">
+            <img src="https://picsum.photos/1920/1080" class="card-img" />
+            <div class="card-footer">
+              <p class="card-title">Receita</p>
+              <div class="stars">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+              </div>
+              <p class="card-category">Categoria - Dificuldade</p>
+            </div>
+          </div>
+          <!-- CARD -->
+          <div class="card-wrapper">
+            <img src="https://picsum.photos/1920/1080" class="card-img" />
+            <div class="card-footer">
+              <p class="card-title">Receita</p>
+              <div class="stars">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+              </div>
+              <p class="card-category">Categoria - Dificuldade</p>
+            </div>
+          </div>
+          <!-- CARD -->
+          <div class="card-wrapper">
+            <img src="https://picsum.photos/1920/1080" class="card-img" />
+            <div class="card-footer">
+              <p class="card-title">Receita</p>
+              <div class="stars">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+              </div>
+              <p class="card-category">Categoria - Dificuldade</p>
+            </div>
+          </div>
+          <!-- CARD -->
+          <div class="card-wrapper">
+            <img src="https://picsum.photos/1920/1080" class="card-img" />
+            <div class="card-footer">
+              <p class="card-title">Receita</p>
+              <div class="stars">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+              </div>
+              <p class="card-category">Categoria - Dificuldade</p>
+            </div>
+          </div>
+          <!-- CARD -->
+          <div class="card-wrapper">
+            <img src="https://picsum.photos/1920/1080" class="card-img" />
+            <div class="card-footer">
+              <p class="card-title">Receita</p>
+              <div class="stars">
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star checked"></span>
+                <span class="fa fa-star"></span>
+                <span class="fa fa-star"></span>
+              </div>
+              <p class="card-category">Categoria - Dificuldade</p>
+            </div>
+          </div>
+          <button type="button" class="carousel-shadow right control">
+            <svg
+              width="70px"
+              height="70px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.5 7L14.5 12L9.5 17"
+                stroke="#000000"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </section>
     </div>
   </body>
 </html>

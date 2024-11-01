@@ -6,6 +6,7 @@
   flex-wrap: wrap;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
   width: fit-content;
   border-radius: 15px;
 }
@@ -35,4 +36,17 @@
   font-size: 12px;
   font-weight: 700;
   margin: 10px 0;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.stars span {
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+.checked {
+  color: #e4e801;
 }

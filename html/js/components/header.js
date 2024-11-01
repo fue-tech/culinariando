@@ -1,6 +1,5 @@
 function header() {
   return `
-    <nav class="menu bg-primary">
       <a href="/" class="logo-wrapper">
         <img src="./html/img/logo.png" alt="Logo do site" class="logo" />
       </a>
@@ -40,10 +39,11 @@ function header() {
           </p>
         </div>
       </div>
-    </nav>
   `;
 }
 
 window.onload = () => {
-  window.document.body.innerHTML = header() + window.document.body.innerHTML;
+  const headerElement = document.getElementById("nav");
+  headerElement.classList.add("menu", "bg-primary");
+  headerElement.innerHTML = header();
 };
