@@ -1,29 +1,43 @@
-const cards = [
-  {
-    name: "Bolo de cenoura",
-    image:
-      "https://www.receitasnestle.com.br/images/default-source/recipes/bolo_de_cenoura.jpg",
-    category: "Bolos",
-    difficulty: "Fácil",
-  },
-  {
-    name: "Pão de queijo",
-    image:
-      "https://www.receitasnestle.com.br/images/default-source/recipes/pao_de_queijo.jpg",
-    category: "Salgados",
-    difficulty: "Fácil",
-  },
-  {
-    name: "Brigadeiro",
-    image:
-      "https://www.receitasnestle.com.br/images/default-source/recipes/brigadeiro.jpg",
-    category: "Doces",
-    difficulty: "Fácil",
-  },
-];
+// const cards = [
+//   {
+//     name: "Bolo de cenoura",
+//     image:
+//       "https://www.receitasnestle.com.br/images/default-source/recipes/bolo_de_cenoura.jpg",
+//     category: "Bolos",
+//     difficulty: "Fácil",
+//   },
+//   {
+//     name: "Pão de queijo",
+//     image:
+//       "https://www.receitasnestle.com.br/images/default-source/recipes/pao_de_queijo.jpg",
+//     category: "Salgados",
+//     difficulty: "Fácil",
+//   },
+//   {
+//     name: "Brigadeiro",
+//     image:
+//       "https://www.receitasnestle.com.br/images/default-source/recipes/brigadeiro.jpg",
+//     category: "Doces",
+//     difficulty: "Fácil",
+//   },
+// ];
+
+async function getCards() {
+  try {
+    const response = await fetch("../php/carousel.php");
+
+    if (!response.ok) {
+      throw new Error("Erro ao buscar o carrossel");
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 function card({ name, image, category, difficulty }) {
-  return `
+  const element = `
     <div class="card-wrapper">
       <img src="${image}" class="card-img" />
       <div class="card-footer">
@@ -39,15 +53,15 @@ function card({ name, image, category, difficulty }) {
       </div>
     </div>
   `;
-}
 
-function initializeCards() {
   const cardsContainer = document.querySelector(".carousel");
 
-  cardsContainer.innerHTML = cards.map(card).join("");
+  cardsContainer.innerHTML = element;
 
   const firstCard = cardsContainer.querySelector(".card-wrapper");
   firstCard.classList.add("current-card");
 }
 
-document.addEventListener("DOMContentLoaded", initializeCards);
+document.addEventListener("DOMContentLoaded", async () => {
+  await getCards();
+});

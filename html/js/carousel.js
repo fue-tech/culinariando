@@ -47,7 +47,6 @@ function initializeCarousel(carouselWrapper) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Inicialize cada carrossel individualmente passando o contêiner de cada um
   const carousels = document.querySelectorAll(".carousel-wrapper");
   carousels.forEach((carousel) => initializeCarousel(carousel));
 });

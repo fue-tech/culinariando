@@ -57,8 +57,9 @@
 
 .carousel {
   display: flex;
+  justify-content: space-between;
   background-color: #ebebeb;
-  min-height: 200px;
+  min-height: 400px;
   padding: 30px 30px;
   gap: 30px;
   overflow-x: auto;
