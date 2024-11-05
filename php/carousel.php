@@ -2,15 +2,16 @@
   include('connect.php');
 
   $sql = "
-  SELECT  
-      c.id AS carrossel_id,
-      c.nome AS titulo,
-      r.id AS receita_id,
-      r.nome AS receita_nome,
-      r.dificuldade,
-      r.categoria
-  FROM carrossel AS c
-  JOIN receitas AS r ON c.id = r.carrossel_id;
+    SELECT  
+        c.id AS carrossel_id,
+        c.nome AS titulo,
+        r.id AS receita_id,
+        r.nome AS receita_nome,
+        r.id_dificuldade,
+        r.id_categoria
+    FROM carrossel AS c
+    JOIN receita_carrossel AS rc ON c.id = rc.id_carrossel
+    JOIN receita AS r ON rc.id_receita = r.id;
   ";
 
   $result = $conn->query($sql);

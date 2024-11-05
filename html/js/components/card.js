@@ -1,30 +1,10 @@
-// const cards = [
-//   {
-//     name: "Bolo de cenoura",
-//     image:
-//       "https://www.receitasnestle.com.br/images/default-source/recipes/bolo_de_cenoura.jpg",
-//     category: "Bolos",
-//     difficulty: "Fácil",
-//   },
-//   {
-//     name: "Pão de queijo",
-//     image:
-//       "https://www.receitasnestle.com.br/images/default-source/recipes/pao_de_queijo.jpg",
-//     category: "Salgados",
-//     difficulty: "Fácil",
-//   },
-//   {
-//     name: "Brigadeiro",
-//     image:
-//       "https://www.receitasnestle.com.br/images/default-source/recipes/brigadeiro.jpg",
-//     category: "Doces",
-//     difficulty: "Fácil",
-//   },
-// ];
+const baseURL = "http://localhost";
 
 async function getCards() {
   try {
-    const response = await fetch("../php/carousel.php");
+    const response = await fetch(`${baseURL}/culinariando/php/carousel.php`);
+
+    console.log("response", response);
 
     if (!response.ok) {
       throw new Error("Erro ao buscar o carrossel");
@@ -36,12 +16,12 @@ async function getCards() {
   }
 }
 
-function card({ name, image, category, difficulty }) {
+function card({ nome, image, category, difficulty }) {
   const element = `
     <div class="card-wrapper">
       <img src="${image}" class="card-img" />
       <div class="card-footer">
-        <p class="card-title">${name}</p>
+        <p class="card-title">${nome}</p>
         <div class="stars">
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
@@ -56,12 +36,17 @@ function card({ name, image, category, difficulty }) {
 
   const cardsContainer = document.querySelector(".carousel");
 
-  cardsContainer.innerHTML = element;
+  cardsContainer.appendChild(
+    document.createRange().createContextualFragment(element)
+  );
 
   const firstCard = cardsContainer.querySelector(".card-wrapper");
   firstCard.classList.add("current-card");
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await getCards();
+  const response = await getCards();
+  response[0].receitas.forEach((receita) => {
+    card(receita);
+  });
 });
