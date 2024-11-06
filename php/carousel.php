@@ -1,18 +1,7 @@
 <?php
   include('connect.php');
 
-  $sql = "
-    SELECT  
-        c.id AS carrossel_id,
-        c.nome AS titulo,
-        r.id AS receita_id,
-        r.nome AS receita_nome,
-        r.id_dificuldade,
-        r.id_categoria
-    FROM carrossel AS c
-    JOIN receita_carrossel AS rc ON c.id = rc.id_carrossel
-    JOIN receita AS r ON rc.id_receita = r.id;
-  ";
+  $sql = "SELECT * FROM receita_detalhada";
 
   $result = $conn->query($sql);
 
@@ -31,8 +20,8 @@
           }
           
           $carrosselData[$carrosselId]['receitas'][] = [
-              'id' => $row['receita_id'],
-              'nome' => $row['receita_nome'],
+              'nome' => $row['nome'],
+              'imagem' => $row['imagem'],
               'dificuldade' => $row['dificuldade'],
               'categoria' => $row['categoria']
           ];
