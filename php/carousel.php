@@ -1,37 +1,36 @@
 <?php
-  include('connect.php');
+include('connect.php');
 
-  $sql = "SELECT * FROM receita_detalhada";
+$sql = "SELECT * FROM carrossel_receitas";
+$result = $conn->query($sql);
 
-  $result = $conn->query($sql);
+$carrosselData = [];
 
-  $carrosselData = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $carrosselId = $row['carrossel_id'];
+        
+        if (!isset($carrosselData[$carrosselId])) {
+            $carrosselData[$carrosselId] = [
+                'id' => $carrosselId,
+                'nome' => $row['carrossel_nome'],
+                'receitas' => []  
+            ];
+        }
 
-  if ($result->num_rows > 0) {
-      while ($row = $result->fetch_assoc()) {
-          $carrosselId = $row['carrossel_id'];
-          
-          if (!isset($carrosselData[$carrosselId])) {
-              $carrosselData[$carrosselId] = [
-                  'id' => $carrosselId,
-                  'titulo' => $row['titulo'],
-                  'receitas' => []
-              ];
-          }
-          
-          $carrosselData[$carrosselId]['receitas'][] = [
-              'nome' => $row['nome'],
-              'imagem' => $row['imagem'],
-              'dificuldade' => $row['dificuldade'],
-              'categoria' => $row['categoria']
-          ];
-      }
-  }
+        $receitas = json_decode($row['receitas'], true);
 
-  $carrosselData = array_values($carrosselData);
+        if (is_array($receitas)) {
+            $carrosselData[$carrosselId]['receitas'] = array_merge($carrosselData[$carrosselId]['receitas'], $receitas);
+        }
+    }
+}
 
-  header('Content-Type: application/json');
-  echo json_encode($carrosselData, JSON_PRETTY_PRINT);
+// Transforma o array em uma lista indexada
+$carrosselData = array_values($carrosselData);
 
-  $conn->close();
+header('Content-Type: application/json');
+echo json_encode($carrosselData, JSON_PRETTY_PRINT);
+
+$conn->close();
 ?>

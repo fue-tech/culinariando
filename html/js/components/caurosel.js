@@ -62,12 +62,61 @@ async function getCards() {
   }
 }
 
-function card({ nome, imagem, categoria, dificuldade }) {
+function carousel(data) {
+  const elemnt = `
+    <section class="carousel-wrapper">
+      <h1 class="carousel-title text-tertiary">${data.nome}</h1>
+      <button class="carousel-shadow left control">
+        <svg
+          width="70px"
+          height="70px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14.5 17L9.5 12L14.5 7"
+            stroke="#000000"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <button type="button" class="carousel-shadow right control">
+        <svg
+          width="70px"
+          height="70px"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.5 7L14.5 12L9.5 17"
+            stroke="#000000"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+      <div class="carousel"></div>
+    </section>
+  `;
+
+  const carouselContainer = document.querySelector(".carousels");
+
+  carouselContainer.appendChild(
+    document.createRange().createContextualFragment(elemnt)
+  );
+
+  data.receitas.forEach((receita) => card(receita));
+}
+
+function card({ receita, imagem, categoria, dificuldade }) {
   const element = `
     <div class="card-wrapper">
       <img src="${imagem}" class="card-img" />
       <div class="card-footer">
-        <p class="card-title">${nome}</p>
+        <p class="card-title">${receita}</p>
         <div class="stars">
           <span class="fa fa-star checked"></span>
           <span class="fa fa-star checked"></span>
@@ -92,8 +141,10 @@ function card({ nome, imagem, categoria, dificuldade }) {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const response = await getCards();
-  response[0].receitas.forEach((receita) => {
-    card(receita);
+  console.log("response", response);
+  response.forEach((data) => {
+    carousel(data);
+    // card(receita);
 
     const carousels = document.querySelectorAll(".carousel-wrapper");
     carousels.forEach((carousel) => initializeCarousel(carousel));

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Culinariando</title>
     <script src="./html/js/index.js" defer></script>
-    <script src="./html/js/components/card.js" defer></script>
+    <script src="./html/js/components/caurosel.js" defer></script>
     <script src="./html/js/components/header.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -49,42 +49,7 @@
           onkeydown="search(event)"
         />
       </section>
-      <section class="carousel-wrapper">
-        <h1 class="carousel-title text-tertiary">Populares</h1>
-        <button class="carousel-shadow left control">
-          <svg
-            width="70px"
-            height="70px"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M14.5 17L9.5 12L14.5 7"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-        <button type="button" class="carousel-shadow right control">
-          <svg
-            width="70px"
-            height="70px"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M9.5 7L14.5 12L9.5 17"
-              stroke="#000000"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-        <div class="carousel"></div>
-      </section>
+      <section class="carousels"></section>
     </div>
   </body>
 </html>
