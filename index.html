@@ -51,5 +51,35 @@
       </section>
       <section class="carousels"></section>
     </div>
+  </div>
+  <div class="form-container">
+    <h2>REGISTRAR RECEITA</h2>
+    <form>
+      <label for="recipe-name">Nome da receita</label>
+      <input type="text" id="recipe-name">
+
+      <label>Dificuldade da receita</label>
+      <div class="difficulty">
+        <label><input type="radio" name="difficulty" value="fácil"> Fácil</label>
+        <label><input type="radio" name="difficulty" value="médio"> Médio</label>
+        <label><input type="radio" name="difficulty" value="difícil"> Difícil</label>
+      </div>
+
+      <label for="recipe-description">Descrição</label>
+      <textarea id="recipe-description"></textarea>
+
+      <div class="upload">
+        <input type="file" id="image-upload">
+      </div>
+      <div>
+        <button type="button" class="add-btn">Adicionar ingrediente</button>
+        <button type="button" class="add-btn">Instrução de preparo</button>
+      </div>
+
+      <button type="submit" class="submit-btn">REGISTRAR</button>
+    </form>
+  </div>
+
+
   </body>
 </html>

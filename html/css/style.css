@@ -44,3 +44,49 @@ button:hover {
 .text-quaternary {
   color: black;
 }
+.form-container {
+  max-width: 400px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin: 30px auto;
+  border-radius: 8px;
+  text-align: center;
+}
+.difficulty{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+  
+}
+.difficulty.button{
+  color: gray;
+  
+}
+.upload {
+  margin: 10px 0;
+}
+.submit-btn {
+  background-color: #FF6B35;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.add-btn {
+  cursor: pointer;
+  border: #f3701b;
+  padding: 5px;
+  border-radius: 5px;
+  margin-top: 10px;
+  
+}
+.recipe-name{
+  color:black;
+
+}
+
+
