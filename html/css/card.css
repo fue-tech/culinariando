@@ -8,6 +8,14 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: white;
   border-radius: 15px;
+  text-decoration: none;
+  color: black;
+  transition: all 0.3s;
+}
+
+.card-wrapper:hover {
+  background-color: #f7f7f7;
+  transform: scale(1.02);
 }
 
 .card-wrapper.current-card {

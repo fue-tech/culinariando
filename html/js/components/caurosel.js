@@ -111,9 +111,9 @@ function carousel(data) {
   data.receitas.forEach((receita) => card(receita));
 }
 
-function card({ receita, imagem, categoria, dificuldade }) {
+function card({ receita_id, receita, imagem, categoria, dificuldade }) {
   const element = `
-    <div class="card-wrapper">
+    <a href="/culinariando/receita.html?id=${receita_id}" class="card-wrapper">
       <img src="${imagem}" class="card-img" />
       <div class="card-footer">
         <p class="card-title">${receita}</p>
@@ -126,25 +126,26 @@ function card({ receita, imagem, categoria, dificuldade }) {
         </div>
         <p class="card-category">${categoria} - ${dificuldade}</p>
       </div>
-    </div>
+    </a>
   `;
 
-  const cardsContainer = document.querySelector(".carousel");
+  const cardsContainer = document.querySelectorAll(".carousel");
 
-  cardsContainer.appendChild(
+  cardsContainer[cardsContainer.length - 1].appendChild(
     document.createRange().createContextualFragment(element)
   );
 
-  const firstCard = cardsContainer.querySelector(".card-wrapper");
+  const firstCard =
+    cardsContainer[cardsContainer.length - 1].querySelector(".card-wrapper");
   firstCard.classList.add("current-card");
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
   const response = await getCards();
-  console.log("response", response);
   response.forEach((data) => {
     carousel(data);
-    // card(receita);
+
+    console.log("data", data);
 
     const carousels = document.querySelectorAll(".carousel-wrapper");
     carousels.forEach((carousel) => initializeCarousel(carousel));
