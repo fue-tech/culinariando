@@ -1,0 +1,53 @@
+*{ margin:0; padding:0;}
+
+body{ font:100%; background:#ffffff; color: #000000;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif}
+
+form,input,select,textarea{margin:0; padding:0; color:#ffffff;}
+
+div.box {
+    margin:0 auto;
+    width:800px;
+    position:relative;
+    top:4em;
+    border-radius: 20px;
+    background-color: #E5E5E5;
+    box-shadow:
+    2px 8px 5px 0px rgba(0, 0, 0, 0.253),
+    -2px 3px 5px 0px rgba(0, 0, 0, 0.253);
+  
+}
+
+div.box h2 {
+    color:#000000;
+    font-size:18px;
+    text-transform:uppercase;
+    padding:5px 0 5px 5px;
+}
+
+div.box label {
+    color: black;
+    width:50%;
+    border: 20px;
+    display: block;
+    color: black;
+    border-top:1px solid #ffffff;
+    border-bottom:1px solid #ffffff;
+    padding:10px 0 10px 0;
+}
+
+
+div.box .message{
+    height: 50px;
+    width:350px;
+    background:#F3701B;
+    border-radius: 20px;
+    color: white;
+}
+
+.link {
+    color: #F3701B;
+}
+
+p {
+    color: black;
+}

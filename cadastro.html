@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Busca</title>
+    <script src="./html/js/components/header.js"></script>
+    <script src="./html/js/cadastro.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./html/css/style.css" />
+    <link rel="stylesheet" href="./html/css/header.css" />
+    <link rel="stylesheet" href="./html/css/cadastro.css" />
+</head>
+<body>
+
+    <nav id="nav"></nav>
+    <div class="box">
+        <form id="cadastro">
+            <h2>CADASTRO DE USUÁRIO</h2>
+            <label for="nome_cadastro">Nome: <br>
+            <input type="text" id="nome_cadastro" name="nome_cadastro" required><br></label>
+
+            <label for="email_cadastro">Digite o seu email:<br>
+            <input type="email" id="email_cadastro" name="email_cadastro" required><br></label>
+
+            <label for="senha_cadastro">Senha:<br>
+            <input type="password" id="senha_cadastro" name="senha_cadastro" required><br></label>
+
+            <label for="confirmasenha">Confirme sua Senha:<br>
+            <input type="password" id="confirmasenha" name="confirmasenha" required><br></label>
+
+            <label for="cpf">CPF:<br>
+            <input type="text" id="cpf" name="cpf" required><br></label>
+
+            <label for="telefone">Telefone:<br>
+            <input type="text" id="telefone" name="telefone" required><br></label>
+            <br/>
+            <label>Qual o seu gênero?
+                <select name="sexo" id="sexo" name="sexo" required>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Outro">Outro</option>
+                    <option value="Prefiro_nao">Prefiro não dizer</option>
+                </select><br/></label>
+                
+            <button class="message" type="button" onclick="create()">Cadastrar</button>
+
+            <p>Já tem uma conta? 
+                <a class="link" href="./login.html">Acessar</a>
+            </p>
+        </form>
+    </div>
+    </div>
+</html>
