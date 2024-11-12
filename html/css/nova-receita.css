@@ -1,0 +1,35 @@
+.ingredient-list {
+  max-height: 400px;
+  overflow-y: scroll;
+  width: fit-content;
+}
+
+.ingredient-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 350px;
+  margin-bottom: 10px;
+}
+
+.ingredient {
+  width: 150px;
+}
+
+.edit-ing {
+  background-color: rgb(214, 211, 33);
+  padding: 5px 8px;
+  border-radius: 5px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.delete-ing {
+  background-color: rgb(255, 0, 0);
+  padding: 5px 8px;
+  border-radius: 5px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+}

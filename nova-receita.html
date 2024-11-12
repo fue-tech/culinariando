@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-brs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nova receita</title>
+    <script src="./html/js/components/header.js" defer></script>
+    <script src="./html/js/ingredientes.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./html/css/style.css" />
+    <link rel="stylesheet" href="./html/css/header.css" />
+    <link rel="stylesheet" href="./html/css/nova-receita.css" />
+  </head>
+  <body>
+    <nav id="nav"></nav>
+    <div>
+      <h1>Cadastrar ingredientes</h1>
+      <form>
+        <label>Nome do ingrediente</label>
+        <input type="text" id="nome-ingrediente" />
+        <button type="button" onclick="addIngredient()">Adicionar</button>
+      </form>
+      <div>Lista de ingredientes</div>
+      <ul id="lista-ingredientes" class="ingredient-list"></ul>
+    </div>
+    <!-- <div>
+      <h1>Nova receita</h1>
+      <form>
+        <label>Nome da receita</label>
+        <input type="text" id="nome-receita" />
+        <label>Modo de preparo</label>
+        <textarea id="modo-preparo"></textarea>
+        <label>Video</label>
+        <input type="text" id="video" />
+        <label>Imagem</label>
+        <input type="text" id="imagem" />
+        <label>Categoria</label>
+        <input type="text" id="categoria" />
+        <label>Dificuldade</label>
+        <input type="text" id="dificuldade" />
+        <button type="button" onclick="addRecipe()">Adicionar</button>
+      </form>
+    </div> -->
+  </body>
+</html>
