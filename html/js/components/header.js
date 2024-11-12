@@ -7,11 +7,17 @@ function header() {
         <a href="/culinariando" class="menu-item">
           <li>Início</li>
         </a>
-        <a href="/culinariando/receitas.html" class="menu-item">
-          <li>Receitas</li>
+        <a href="/culinariando/nova-receita.html" class="menu-item">
+          <li>Nova receita</li>
         </a>
-        <a href="/culinariando/favoritos.html" class="menu-item">
-          <li>Favoritos</li>
+        <a href="#" class="menu-item">
+          <li>Carrossel</li>
+        </a>
+        <a href="#" class="menu-item">
+          <li>Categoria</li>
+        </a>
+        <a href="#" class="menu-item">
+          <li>Tags</li>
         </a>
       </ul>
       <div class="welcome">
@@ -35,7 +41,7 @@ function header() {
           <p>Bem vindo,</p>
           <p>
             realize o <a href="/culinariando/cadastro.html">cadastro</a> ou faça o
-            <a href="/culinariando/login">login</a>
+            <a href="#">login</a>
           </p>
         </div>
       </div>
