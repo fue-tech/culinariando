@@ -36,8 +36,8 @@ function appendIngredient({ id, nome }) {
         class="ingredient"
       />
       <div>
-        <button type="button" class="edit-ing" id="${id}" onclick="editIngredient(${id})">Editar</button>
-        <button type="button" class="delete-ing" id="${id}" onclick="deleteIngredient(${id})">Excluir</button>
+        <button type="button" class="edit-btn" id="${id}" onclick="editIngredient(${id})">Editar</button>
+        <button type="button" class="delete-btn" id="${id}" onclick="deleteIngredient(${id})">Excluir</button>
       </div>
     </li>
   `;

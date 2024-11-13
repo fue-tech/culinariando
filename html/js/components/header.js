@@ -9,7 +9,7 @@ function header() {
           <a href="/culinariando" class="menu-item">Início</a>
         </li>
         <li>
-          <a href="/culinariando/nova-receita.html" class="menu-item">Nova receita</a>
+          <a href="/culinariando/receitas.html" class="menu-item">Receitas</a>
         </li>
         <li>
           <a href="/culinariando/ingredientes.html" class="menu-item">Ingredientes</a>
