@@ -31,6 +31,46 @@
   transition: all 0.3s ease-in-out;
 }
 
+.drawer {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  color: white;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  z-index: 10;
+}
+
+.drawer.active {
+  right: 0;
+}
+
+.drawer-menu {
+  list-style: none;
+  padding: 0;
+}
+
+.drawer-menu li {
+  margin: 1rem 0;
+}
+
+.drawer-menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.hamburguer {
+  display: none;
+  background: none;
+  border: none;
+}
+
 .logo {
   max-width: 300px;
   font-weight: 700;
@@ -52,7 +92,11 @@
 .welcome-text {
   font-size: 12px;
   color: white;
-  padding: 0 10px;
+  margin-right: 0.75rem;
+}
+
+.welcome svg {
+  margin-right: 0.75rem;
 }
 
 .welcome-text > p > a {
@@ -61,8 +105,17 @@
   font-weight: 700;
 }
 
-@media screen and (min-width: 768px) {
-  .menu-item {
-    font-size: 16px;
+@media screen and (max-width: 990px) {
+  .menu-itens {
+    display: none;
+  }
+  .hamburguer {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 1180px) {
+  .welcome-text {
+    display: none;
   }
 }
