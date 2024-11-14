@@ -145,8 +145,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   response.forEach((data) => {
     carousel(data);
 
-    console.log("data", data);
-
     const carousels = document.querySelectorAll(".carousel-wrapper");
     carousels.forEach((carousel) => initializeCarousel(carousel));
   });

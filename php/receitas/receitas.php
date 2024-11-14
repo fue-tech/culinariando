@@ -2,7 +2,7 @@
 include('../connect.php');
 
 if (!($conn->connect_error)){
-	$sql = "SELECT * FROM receita";
+	$sql = "SELECT * FROM receita_detalhada";
 	$result = $conn->query($sql);
 	
 	if ($result && $result->num_rows > 0) {

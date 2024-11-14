@@ -6,6 +6,7 @@
     <title>Nova receita</title>
     <script src="./html/js/components/header.js" defer></script>
     <script src="./html/js/components/popup.js" defer></script>
+    <script src="./html/js/receitas.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,93 +20,86 @@
     <link rel="stylesheet" href="./html/css/style.css" />
     <link rel="stylesheet" href="./html/css/header.css" />
     <link rel="stylesheet" href="./html/css/nova-receita.css" />
+    <link rel="stylesheet" href="./html/css/card.css" />
     <link rel="stylesheet" href="./html/css/popup.css" />
   </head>
   <body>
     <nav id="nav"></nav>
-    <button onclick="openPopup()" class="open-popup-btn">Nova Receita</button>
-
-    <div class="popup-overlay" id="popupOverlay" onclick="outsideClick(event)">
-      <div class="popup-content">
-        <span class="close-btn" onclick="closePopup()">×</span>
-        <form class="recipe-form">
-          <h2 class="title-form">Nova receita</h2>
-          <label>Nome da receita</label>
-          <input type="text" id="nome-receita" />
-          <label>Modo de preparo</label>
-          <textarea id="modo-preparo"></textarea>
-          <label>Video</label>
-          <input type="text" id="video" />
-          <label>Imagem</label>
-          <input type="text" id="imagem" />
-          <label>Categoria</label>
-          <input type="text" id="categoria" />
-          <label>Dificuldade</label>
-          <input type="text" id="dificuldade" />
-          <button type="button" onclick="addRecipe()" class="btn-form">
-            Adicionar
-          </button>
-        </form>
+    <div class="container">
+      <button onclick="openPopup(1)" class="open-popup-btn">
+        Nova Receita
+      </button>
+      <div
+        class="popup-overlay"
+        id="popupOverlay-1"
+        onclick="outsideClick(event)"
+      >
+        <div class="popup-content">
+          <span class="close-btn" onclick="closePopup(1)">×</span>
+          <form class="recipe-form">
+            <h2 class="title-form">Nova receita</h2>
+            <label>Nome da receita</label>
+            <input type="text" id="nome" />
+            <label>Modo de preparo</label>
+            <textarea id="preparo"></textarea>
+            <label>Video</label>
+            <input type="text" id="video" />
+            <label>Imagem</label>
+            <input type="text" id="imagem" />
+            <label>Categoria</label>
+            <select id="categoria">
+              <option value="1">Carnes</option>
+              <option value="2">Massas</option>
+              <option value="3">Sobremesas</option>
+            </select>
+            <label>Dificuldade</label>
+            <select id="dificuldade">
+              <option value="1">Fácil</option>
+              <option value="2">Média</option>
+              <option value="3">Difícil</option>
+            </select>
+            <button type="button" onclick="addRecipe()" class="btn-form">
+              Adicionar
+            </button>
+          </form>
+        </div>
+      </div>
+      <div
+        class="popup-overlay"
+        id="popupOverlay-2"
+        onclick="outsideClick(event)"
+      >
+        <div class="popup-content">
+          <span class="close-btn" onclick="closePopup(2)">×</span>
+          <form class="recipe-form">
+            <h2 class="title-form">Editar receita</h2>
+            <label>Nome da receita</label>
+            <input type="text" id="nome" />
+            <label>Modo de preparo</label>
+            <textarea id="preparo"></textarea>
+            <label>Video</label>
+            <input type="text" id="video" />
+            <label>Imagem</label>
+            <input type="text" id="imagem" />
+            <label>Categoria</label>
+            <select id="categoria">
+              <option value="1">Carnes</option>
+              <option value="2">Massas</option>
+              <option value="3">Sobremesas</option>
+            </select>
+            <label>Dificuldade</label>
+            <select id="dificuldade">
+              <option value="1">Fácil</option>
+              <option value="2">Média</option>
+              <option value="3">Difícil</option>
+            </select>
+            <button type="button" onclick="addRecipe()" class="btn-form">
+              Editar
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-    <table>
-      <thead>
-        <tr>
-          <th>Receita</th>
-          <th>Preparo</th>
-          <th>Video</th>
-          <th>Imagem</th>
-          <th>Data</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <input value="The Making" type="text" />
-          </td>
-          <td>
-            <input value="May 23" type="text" />
-          </td>
-          <td>
-            <input value="Drama" type="text" />
-          </td>
-          <td>
-            <input value="4.2" type="text" />
-          </td>
-          <td>13/11/2024</td>
-          <td>
-            <button class="edit-btn">Editar</button>
-          </td>
-          <td>
-            <button class="delete-btn">Excluir</button>
-          </td>
-        </tr>
-        <!-- <tr>
-          <td>
-            <input value="The Making" type="text" />
-          </td>
-          <td>
-            <input value="May 23" type="text" />
-          </td>
-          <td>
-            <input value="Drama" type="text" />
-          </td>
-          <td>
-            <input value="4.2" type="text" />
-          </td>
-          <td>
-            <input value="521" type="text" />
-          </td>
-          <td>
-            <button>Editar</button>
-          </td>
-          <td>
-            <button>Excluir</button>
-          </td>
-        </tr> -->
-      </tbody>
-    </table>
+    <div class="cards-wrapper"></div>
   </body>
 </html>
