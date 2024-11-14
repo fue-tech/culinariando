@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-brs">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,18 +18,20 @@
     />
     <link rel="stylesheet" href="./html/css/style.css" />
     <link rel="stylesheet" href="./html/css/header.css" />
-    <link rel="stylesheet" href="./html/css/nova-receita.css" />
+    <link rel="stylesheet" href="./html/css/ingredientes.css" />
   </head>
   <body>
     <nav id="nav"></nav>
-    <div>
-      <h1>Cadastrar ingredientes</h1>
-      <form>
-        <label>Nome do ingrediente</label>
-        <input type="text" id="nome-ingrediente" maxlength="50" />
+    <div class="container">
+      <h2 class="title">Cadastrar ingredientes</h2>
+      <div class="new-ingredient-wrapper">
+        <div class="new-ingredient">
+          <label>Nome do ingrediente</label>
+          <input type="text" id="nome-ingrediente" maxlength="50" />
+        </div>
         <button type="button" onclick="addIngredient()">Adicionar</button>
-      </form>
-      <div>Lista de ingredientes</div>
+      </div>
+      <h2 class="title">Lista de ingredientes</h2>
       <ul id="lista-ingredientes" class="ingredient-list"></ul>
     </div>
   </body>

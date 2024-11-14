@@ -41,7 +41,7 @@ async function addRecipe() {
     alert(result.data);
 
     if (!result.data.includes("Erro")) {
-      window.location.href = "receitas.html";
+      window.location.reload();
     }
   } catch (error) {
     alert("Erro ao criar receita!");
@@ -59,7 +59,7 @@ async function deleteRecipe(id) {
     alert(result.data);
 
     if (!result.data.includes("Erro")) {
-      window.location.href = "receitas.html";
+      window.location.reload();
     }
   } catch (error) {
     console.error(error);
@@ -117,7 +117,7 @@ async function updateRecipe(id) {
     alert(result.data);
 
     if (!result.data.includes("Erro")) {
-      window.location.href = "receitas.html";
+      window.location.reload();
     }
   } catch (error) {
     alert("Erro ao atualizar receita!");

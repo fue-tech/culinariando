@@ -16,6 +16,7 @@
   border-radius: 5px;
   text-transform: uppercase;
   margin-bottom: 30px;
+  font-weight: 600;
   transition: background-color 0.3s ease;
 }
 
@@ -63,7 +64,6 @@ select {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  /* margin-top: 1rem; */
 }
 
 .btn-form:hover {
@@ -105,29 +105,4 @@ select {
 .recipe-card:hover {
   background-color: #f7f7f7;
   transform: scale(1.02);
-}
-
-table {
-  border-collapse: collapse;
-  background-color: white;
-  text-align: left;
-
-  th {
-    background-color: #f3711bde;
-    color: white;
-    padding: 0.75rem 2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    font-size: 0.7rem;
-    font-weight: 900;
-    text-align: center;
-  }
-
-  td {
-    padding: 1rem 2rem;
-  }
-
-  tr:nth-child(even) {
-    background-color: #f3f8fe;
-  }
 }

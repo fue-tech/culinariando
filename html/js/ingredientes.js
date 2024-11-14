@@ -18,6 +18,10 @@ async function addIngredient() {
     const result = await response.json();
 
     alert(result.data);
+
+    if (!result.data.includes("Erro")) {
+      window.location.reload();
+    }
   } catch (error) {
     console.error(error);
     alert("Erro ao criar ingrediente!");
@@ -56,11 +60,9 @@ async function deleteIngredient(id) {
 
     alert(result.data);
 
-    const ingredient = document.getElementById(
-      `ingredient-${id}`
-    ).parentElement;
-
-    ingredient.remove();
+    if (!result.data.includes("Erro")) {
+      window.location.reload();
+    }
   } catch (error) {
     console.error(error);
     alert("Erro ao remover ingrediente!");
@@ -85,6 +87,10 @@ async function editIngredient(id) {
     const result = await response.json();
 
     alert(result.data);
+
+    if (!result.data.includes("Erro")) {
+      window.location.reload();
+    }
   } catch (error) {
     console.error(error);
     alert("Erro ao editar ingrediente!");
