@@ -21,7 +21,7 @@ function header() {
           <a href="#" class="menu-item">Categoria</a>
         </li>
         <li>
-          <a href="#" class="menu-item">Tags</a>
+          <a href="/culinariando/tags.html" class="menu-item">Tags</a>
         </li>
       </ul>
       <div class="welcome">
