@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Título</title>
   <script src="./html/js/components/header.js" defer></script>
+  <script src="./html/js/tags.js" defer></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -150,123 +151,5 @@
       <button class="modal-btn cancel" onclick="hideTag()">CANCELAR</button>
     </div>
   </div>
-
-  <script>
-    const baseURL = "http://localhost";
-
-    async function addTag() {
-      const tag = document.getElementById("nome-tag").value;
-
-      try {
-        const response = await fetch(
-          `${baseURL}/culinariando/php/tags/nova-tag.php`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: new URLSearchParams({ tag }),
-          }
-        );
-
-        const result = await response.json();
-
-        alert(result.data);
-
-        appendTag({ id: result.id, tag });
-
-        document.getElementById("nome-tag").value = "";
-        hideTag();
-      } catch (error) {
-        console.error(error);
-        alert("Erro ao criar tag!");
-      }
-    }
-
-    function appendTag({ id, tag }) {
-      const list = document.getElementById("lista-tags");
-
-      const element = document.createElement("li");
-      element.classList.add("tag-item");
-      element.id = `tag-item-${id}`;
-      element.innerHTML = `
-        <span class="tag-name">${tag}</span>
-        <button class="btn-delete" onclick="deleteTag(${id})">EXCLUIR</button>
-        <button class="btn-edit" onclick="editTag(${id})">EDITAR</button>
-      `;
-
-      list.appendChild(element);
-    }
-
-    async function deleteTag(id) {
-      try {
-        const response = await fetch(
-          `${baseURL}/culinariando/php/tags/remover-tag.php?id=${id}`
-        );
-
-        const result = await response.json();
-
-        alert(result.data);
-
-        const tagElement = document.getElementById(`tag-item-${id}`);
-        tagElement.remove();
-      } catch (error) {
-        console.error(error);
-        alert("Erro ao remover tag!");
-      }
-    }
-
-    async function editTag(id) {
-      const tag = prompt("Digite o novo nome da tag:");
-
-      if (tag) {
-        try {
-          const response = await fetch(
-            `${baseURL}/culinariando/php/tags/editar-tag.php`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-              },
-              body: new URLSearchParams({ tag, id }),
-            }
-          );
-
-          const result = await response.json();
-
-          alert(result.data);
-
-          document.querySelector(`#tag-item-${id} .tag-name`).textContent = tag;
-        } catch (error) {
-          console.error(error);
-          alert("Erro ao editar tag!");
-        }
-      }
-    }
-
-    async function getTags() {
-      try {
-        const response = await fetch(`${baseURL}/culinariando/php/tags/tags.php`);
-        const result = await response.json();
-        const tags = result.data;
-
-        tags.forEach((tag) => {
-          appendTag(tag);
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    function showTag() {
-      document.getElementById("tagModal").style.display = "flex";
-    }
-
-    function hideTag() {
-      document.getElementById("tagModal").style.display = "none";
-    }
-
-    window.document.addEventListener("DOMContentLoaded", getTags);
-  </script>
 </body>
 </html>
