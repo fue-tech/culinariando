@@ -33,6 +33,7 @@ function appendIngredient({ id, nome }) {
         type="text"
         value="${nome}"
         id="ingredient-${id}"
+        maxlength="50"
         class="ingredient"
       />
       <div>
