@@ -1,12 +1,26 @@
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 30px 0;
 }
 
-.container button {
-  margin-top: 50px;
-  margin-bottom: 50px;
+.popup-btn {
+  background-color: #472410;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  transition: background-color 0.3s ease;
+}
+
+.popup-btn:hover {
+  background-color: #5e2e0f;
 }
 
 .recipe-form {
@@ -49,7 +63,7 @@ select {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
 }
 
 .btn-form:hover {

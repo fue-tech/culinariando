@@ -26,8 +26,8 @@
   <body>
     <nav id="nav"></nav>
     <div class="container">
-      <button onclick="openPopup(1)" class="open-popup-btn">
-        Nova Receita
+      <button onclick="openPopup(1)" class="popup-btn">
+        Adicionar receita
       </button>
       <div
         class="popup-overlay"
@@ -36,7 +36,7 @@
       >
         <div class="popup-content">
           <span class="close-btn" onclick="closePopup(1)">×</span>
-          <form class="recipe-form">
+          <form class="recipe-form" id="new-recipe">
             <h2 class="title-form">Nova receita</h2>
             <label>Nome da receita</label>
             <input type="text" id="nome" />
@@ -71,7 +71,7 @@
       >
         <div class="popup-content">
           <span class="close-btn" onclick="closePopup(2)">×</span>
-          <form class="recipe-form">
+          <form class="recipe-form" id="edit-recipe">
             <h2 class="title-form">Editar receita</h2>
             <label>Nome da receita</label>
             <input type="text" id="nome" />
@@ -93,13 +93,13 @@
               <option value="2">Média</option>
               <option value="3">Difícil</option>
             </select>
-            <button type="button" onclick="addRecipe()" class="btn-form">
+            <button type="button" id="update-btn" class="btn-form">
               Editar
             </button>
           </form>
         </div>
       </div>
+      <div class="cards-wrapper"></div>
     </div>
-    <div class="cards-wrapper"></div>
   </body>
 </html>

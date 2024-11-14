@@ -1,12 +1,14 @@
 const baseURL = "http://localhost";
 
 async function addRecipe() {
-  const nome = document.getElementById("nome").value;
-  const preparo = document.getElementById("preparo").value;
-  const video = document.getElementById("video").value;
-  const imagem = document.getElementById("imagem").value;
-  const categoria = document.getElementById("categoria").value;
-  const dificuldade = document.getElementById("dificuldade").value;
+  const form = document.getElementById("new-recipe");
+
+  const nome = form.querySelector("#nome").value;
+  const preparo = form.querySelector("#preparo").value;
+  const video = form.querySelector("#video").value;
+  const imagem = form.querySelector("#imagem").value;
+  const categoria = form.querySelector("#categoria").value;
+  const dificuldade = form.querySelector("#dificuldade").value;
 
   const body = {
     nome,
@@ -65,7 +67,65 @@ async function deleteRecipe(id) {
   }
 }
 
+async function updateRecipe(id) {
+  const form = document.getElementById("edit-recipe");
+
+  const nome = form.querySelector("#nome").value;
+  const preparo = form.querySelector("#preparo").value;
+  const video = form.querySelector("#video").value;
+  const imagem = form.querySelector("#imagem").value;
+  const categoria = form.querySelector("#categoria").value;
+  const dificuldade = form.querySelector("#dificuldade").value;
+
+  const body = {
+    id,
+    nome,
+    preparo,
+    video,
+    imagem,
+    categoria,
+    dificuldade,
+  };
+
+  if (
+    !id ||
+    !nome ||
+    !preparo ||
+    !video ||
+    !imagem ||
+    !categoria ||
+    !dificuldade
+  ) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `${baseURL}/culinariando/php/receitas/editar-receita.php`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams(body),
+      }
+    );
+
+    const result = await response.json();
+
+    alert(result.data);
+
+    if (!result.data.includes("Erro")) {
+      window.location.href = "receitas.html";
+    }
+  } catch (error) {
+    alert("Erro ao atualizar receita!");
+  }
+}
+
 function updateEditForm({
+  id,
   nome,
   preparo,
   video,
@@ -102,6 +162,10 @@ function updateEditForm({
     }
   }
 
+  const updateBtn = document.getElementById("update-btn");
+
+  updateBtn.addEventListener("click", () => updateRecipe(id));
+
   openPopup(2);
 }
 
@@ -124,6 +188,7 @@ function card({ id, nome, preparo, video, imagem, categoria, dificuldade }) {
       </a>
       <div class="card-buttons">
         <button class="edit-btn" onclick="updateEditForm({
+          id: '${id}',
           nome: '${nome}',
           preparo: '${preparo}',
           video: '${video}',
