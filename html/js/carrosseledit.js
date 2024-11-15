@@ -1,4 +1,4 @@
-// Configuração do modal e CRUD
+
 const modal = document.getElementById("modal");
 const closeModal = document.getElementById("closeModal");
 const btnAdicionar = document.getElementById("btnAdicionar");
@@ -7,7 +7,7 @@ const carrosselForm = document.getElementById("carrosselForm");
 const carrosselNomeInput = document.getElementById("carrosselNome");
 let editingCarrosselId = null;
 
-// Exibir o modal
+
 btnAdicionar.addEventListener("click", () => {
     document.getElementById("modalTitle").textContent = "Adicionar Carrossel";
     carrosselNomeInput.value = "";
@@ -15,22 +15,22 @@ btnAdicionar.addEventListener("click", () => {
     modal.style.display = "flex";
 });
 
-// Fechar o modal
+
 closeModal.addEventListener("click", () => {
     modal.style.display = "none";
 });
 
-// Salvar ou atualizar o carrossel
+
 carrosselForm.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const carrosselNome = carrosselNomeInput.value;
     
     if (editingCarrosselId) {
-        // Atualizar carrossel
+ 
         updateCarrossel(editingCarrosselId, carrosselNome);
     } else {
-        // Adicionar novo carrossel
+       
         addCarrossel(carrosselNome);
     }
 
@@ -50,7 +50,7 @@ function addCarrossel(nome) {
     })
     .then(response => response.json())
     .then(data => {
-        loadCarrossel(); // Recarregar a lista de carrossel
+        loadCarrossel(); 
     });
 }
 
@@ -67,7 +67,7 @@ function updateCarrossel(id, nome) {
     })
     .then(response => response.json())
     .then(data => {
-        loadCarrossel(); // Recarregar a lista de carrossel
+        loadCarrossel(); 
     });
 }
 
@@ -119,11 +119,11 @@ function deleteCarrossel(id) {
         })
         .then(response => response.json())
         .then(data => {
-            loadCarrossel(); // Recarregar a lista de carrossel
+            loadCarrossel(); 
         });
     }
 }
 
 
-// Carregar carrossel ao carregar a página
+
 loadCarrossel();

@@ -1,7 +1,7 @@
 <?php
 include("connect.php");
 
-// Conexão com o banco de dados
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -9,12 +9,12 @@ $dbname = "culinariando";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verifica a conexão com o banco de dados
+
 if ($conn->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
-// Verifica o método HTTP da requisição
+
 $request_method = $_SERVER["REQUEST_METHOD"];
 
 // Função para carregar todos os itens do carrossel
@@ -82,7 +82,7 @@ function atualizarCarrossel($conn) {
 function excluirCarrossel($conn) {
     $id = $_GET['id'];
     
-    // Primeiro, exclua os registros relacionados na tabela receita_carrossel
+    
     $sqlDeleteAssociations = "DELETE FROM receita_carrossel WHERE id_carrossel = ?";
     $stmtDeleteAssociations = $conn->prepare($sqlDeleteAssociations);
     $stmtDeleteAssociations->bind_param("i", $id);
@@ -92,7 +92,7 @@ function excluirCarrossel($conn) {
         return;
     }
     
-    // Em seguida, exclua o item de carrossel
+    
     $sql = "DELETE FROM carrossel WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
@@ -131,6 +131,6 @@ switch ($request_method) {
         break;
 }
 
-// Fecha a conexão com o banco de dados
+
 $conn->close();
 ?>
