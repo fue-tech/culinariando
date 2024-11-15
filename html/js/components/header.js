@@ -18,7 +18,7 @@ function header() {
           <a href="/culinariando/carrosseledit.html" class="menu-item">Carrossel</a>
         </li>
         <li>
-          <a href="#" class="menu-item">Categoria</a>
+          <a href="/culinariando/categoria.html" class="menu-item">Categoria</a>
         </li>
         <li>
           <a href="/culinariando/tags.html" class="menu-item">Tags</a>
@@ -50,7 +50,7 @@ function header() {
           <li><a href="/culinariando/receitas.html">Receitas</a></li>
           <li><a href="/culinariando/ingredientes.html">Ingredientes</a></li>
           <li><a href="/culinariando/carrosseledit.html">Carrossel</a></li>
-          <li><a href="#">Categoria</a></li>
+          <li><a href="/culinariando/categoria.html">Categoria</a></li>
           <li><a href="/culinariando/tags.html">Tags</a></li>
         </ul>
       </div>
