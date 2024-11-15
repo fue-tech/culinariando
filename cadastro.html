@@ -23,8 +23,8 @@
 <body>
 
     <nav id="nav"></nav>
-    <div class="box">
-        <form id="cadastro">
+    <div class="box_add">
+        <form id="cadastro" class="cadastro_add">
             <h2>CADASTRO DE USUÁRIO</h2>
             <label for="nome_cadastro">Nome: <br>
             <input type="text" id="nome_cadastro" name="nome_cadastro" required><br></label>
@@ -52,12 +52,15 @@
                     <option value="Prefiro_nao">Prefiro não dizer</option>
                 </select><br/></label>
                 
-            <button class="message" type="button" onclick="create()">Cadastrar</button>
-
-            <p>Já tem uma conta? 
-                <a class="link" href="./login.html">Acessar</a>
-            </p>
+            <button class="message" type="button" id="button_cad" onclick="create()">Cadastrar</button>
         </form>
     </div>
     </div>
+    
+
+    <div class="box_gerenciar" id='listaRegistros'>
+        <div>Lista de usuarios</div>
+        <ul id="lista-user" class="user-list"></ul>
+
+   </div>
 </html>
