@@ -12,7 +12,7 @@ if (!($conn->connect_error)){
 	$stm->bind_param('i', $id);
 																						
 	if ($stm->execute()){
-	  echo json_encode(['data' => 'Usuario deletado com sucesso!']);
+	  echo json_encode(['data' => 'Usuário deletado com sucesso!']);
   } else {
 	  echo json_encode(['data' => 'Erro ao deletar usuario!']);
 	}

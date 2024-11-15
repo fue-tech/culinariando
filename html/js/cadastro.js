@@ -1,93 +1,94 @@
 const baseURL = "http://localhost";
 
 async function create() {
-	
+  let nome_cadastro = document.getElementById("nome_cadastro").value;
+  let email_cadastro = document.getElementById("email_cadastro").value;
+  let senha_cadastro = document.getElementById("senha_cadastro").value;
+  let confirmasenha = document.getElementById("confirmasenha").value;
+  let cpf = document.getElementById("cpf").value;
+  let telefone = document.getElementById("telefone").value;
+  let sexo = document.getElementById("sexo").value;
 
-    let nome_cadastro = document.getElementById("nome_cadastro").value;
-    let email_cadastro = document.getElementById("email_cadastro").value;
-    let senha_cadastro = document.getElementById("senha_cadastro").value;
-    let confirmasenha = document.getElementById("confirmasenha").value;
-    let cpf = document.getElementById("cpf").value;
-    let telefone = document.getElementById("telefone").value;
-    let sexo = document.getElementById("sexo").value;
+  if (
+    !nome_cadastro ||
+    !email_cadastro ||
+    !senha_cadastro ||
+    !confirmasenha ||
+    !cpf ||
+    !telefone
+  ) {
+    alert("Por favor, preencha todos os campos.");
+    return;
+  }
 
-    if (!nome_cadastro || !email_cadastro || !senha_cadastro || !confirmasenha || !cpf || !telefone) {
-        alert("Por favor, preencha todos os campos.");
-        return;
-    }
+  if (senha_cadastro !== confirmasenha) {
+    alert("As senhas não coincidem.");
+    return;
+  }
 
-    if (senha_cadastro !== confirmasenha) {
-        alert("As senhas não coincidem.");
-        return;
-    }
+  const regexCPF = /^\d{11}$/;
+  if (!regexCPF.test(cpf)) {
+    alert("CPF inválido. Digite apenas os números!");
+    return;
+  }
 
-    const regexCPF = /^\d{11}$/;
-    if (!regexCPF.test(cpf)) {
-        alert("CPF inválido. Digite apenas os números!");
-        return;
-    }
+  const regexTELEFONE = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;
+  if (!regexTELEFONE.test(telefone)) {
+    alert("Número de telefone inválido.");
+    return;
+  }
 
-    const regexTELEFONE = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;
-    if (!regexTELEFONE.test(telefone)){
-      alert("Número de telefone inválido.");
-      return;
-    }
+  const regexEMAIL = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!regexEMAIL.test(email_cadastro)) {
+    alert("E-mail inválido.");
+    return;
+  }
 
-    const regexEMAIL = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!regexEMAIL.test(email_cadastro)) {
-      alert("E-mail inválido.");
-      return;
-    }
+  const body = {
+    nome_cadastro,
+    email_cadastro,
+    senha_cadastro,
+    confirmasenha,
+    cpf,
+    telefone,
+    sexo,
+  };
 
-	const body = {
-        nome_cadastro,
-        email_cadastro,
-        senha_cadastro,
-        confirmasenha,
-        cpf,
-        telefone,
-        sexo,
-	}
-	
   try {
-    const response = await fetch
-        (`${baseURL}/culinariando/php/cadastro.php`,
+    const response = await fetch(
+      `${baseURL}/culinariando/php/cadastro.php`,
 
-
-          
-    {
-	    method: "POST",
+      {
+        method: "POST",
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-	    body: new URLSearchParams(body)
-    });
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams(body),
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Erro ao buscar");
     }
-		
+
     const result = await response.json();
 
     if (result && result.data === "Usuário criado com sucesso!") {
-        alert("Usuário criado com sucesso!");
-        location.reload();
+      alert("Usuário criado com sucesso!");
+      window.location.reload();
     } else {
-        alert(result.data || "Erro ao criar usuário.");
+      alert(result.data || "Erro ao criar usuário.");
     }
-    
   } catch (error) {
     console.error(error);
   }
 }
 
-
-function appendUser({ id, nome, telefone, sexo, email, senha}) {
+function appendUser({ id, nome, telefone, sexo, email, senha }) {
   const list = document.getElementById("lista-user");
 
   const element = `
-    <div>
-      <li class="user-list">
+      <li class="user-item">
         <label> Nome
         <input
           type="text"
@@ -131,23 +132,17 @@ function appendUser({ id, nome, telefone, sexo, email, senha}) {
               <option value="Outro">Outro</option>
               <option value="Prefiro_nao">Prefiro não dizer</option>
           </select><br/></label>
-        <div>
-          <button type="button" class="edit-user" id="${id}" onclick="editUser(${id})">Editar</button>
-          <button type="button" class="delete-user" id="${id}" onclick="deleteUser(${id})">Excluir</button>
-        </div>
+          <button type="button" class="edit-btn" id="${id}" onclick="editUser(${id})">Editar</button>
+          <button type="button" class="delete-btn" id="${id}" onclick="deleteUser(${id})">Excluir</button>
       </li>
-    </div>
   `;
 
   list.innerHTML += element;
 }
 
 async function GetUser() {
-	
   try {
-    const response = await fetch(
-      `${baseURL}/culinariando/php/usuario.php`
-    );
+    const response = await fetch(`${baseURL}/culinariando/php/usuario.php`);
 
     const result = await response.json();
 
@@ -162,8 +157,6 @@ async function GetUser() {
 }
 window.document.addEventListener("DOMContentLoaded", GetUser);
 
-
-
 async function deleteUser(id) {
   try {
     const response = await fetch(
@@ -171,12 +164,9 @@ async function deleteUser(id) {
     );
 
     const result = await response.json();
-    if (result.data === "Usuário excluído com sucesso!") {
+    if (result.data === "Usuário deletado com sucesso!") {
       alert(result.data);
-      location.reload();
-      const usuario = document.getElementById(`user-${id}`).parentElement;
-      usuario.remove();
-
+      window.location.reload();
     } else {
       alert(result.data || "Erro ao excluir usuário.");
     }
@@ -185,8 +175,6 @@ async function deleteUser(id) {
     alert("Erro ao remover usuário!");
   }
 }
-
-
 
 async function editUser(id) {
   const nome = document.getElementById(`user-nome-${id}`).value;
@@ -214,14 +202,14 @@ async function editUser(id) {
           senha,
           telefone,
           sexo,
-          id
+          id,
         }),
       }
     );
 
     const result = await response.json();
     alert(result.data);
-    location.reload();
+    window.location.reload();
   } catch (error) {
     console.error(error);
     alert("Erro ao editar usuario!");
