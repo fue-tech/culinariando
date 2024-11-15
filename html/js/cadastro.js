@@ -84,7 +84,7 @@ async function create() {
   }
 }
 
-function appendUser({ id, nome, telefone, sexo, email, senha }) {
+function appendUser({ id, nome, telefone, email, senha }) {
   const list = document.getElementById("lista-user");
 
   const element = `
@@ -109,7 +109,7 @@ function appendUser({ id, nome, telefone, sexo, email, senha }) {
 
         <label> Senha
         <input 
-          type="text"
+          type="password"
           placeholder="${senha}"
           value="${senha}"
           id="user-senha-${id}"
@@ -123,6 +123,7 @@ function appendUser({ id, nome, telefone, sexo, email, senha }) {
           value="${telefone}"
           id="user-telefone-${id}"
           class="user"
+          maxlength="11"
         /></label>
 
         <label>Sexo
