@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categoria</title>
+    <script src="./html/js/components/header.js" defer></script>
+    <script src="./html/js/categoria.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./html/css/style.css" />
+    <link rel="stylesheet" href="./html/css/header.css" />
+    <link rel="stylesheet" href="./html/css/categoria.css" />
+  </head>
+  
+  <body>
+    <nav id="nav"></nav>
+
+    <div class="container">
+      <section class="search-wrapper">
+        <h2>Pesquisar Categoria</h2>
+        <input
+          type="text"
+          id="search"
+          onkeyup="searchCategory()"
+          placeholder="Pesquisar por nome..."
+        />
+      </section>
+      <section class="form-wrapper">
+        <h2>Adicionar Nova Categoria</h2>
+        <form id="categoryForm">
+          <label for="categoryName">Nome da Categoria:</label>
+          <input type="text" id="categoryName" name="categoryName" required />
+          <button type="submit" class="btn">Adicionar Categoria</button>
+        </form>
+      </section>
+      <section class="table-wrapper">
+        <h2>Lista de Categorias</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome da Categoria</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="categoryTable">
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </body>
+</html>
