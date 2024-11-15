@@ -48,9 +48,9 @@ if (!($conn->connect_error)){
 	$stm = $conn->prepare($sql);
 	$stm->bind_param("sssssss", $nome, $cpf, $telefone, $senha, $email, $cargo, $sexo); 
 	if ($stm->execute()){
-        echo json_encode(['data' => "Deu bom"]);
+        echo json_encode(['data' => "Usuário criado com sucesso!"]);
   } else {
-		echo json_encode(['data' => "Nn deu bom"]);
+		echo json_encode(['data' => "Erro ao criar usuário"]);
 	}
 } else {
 	echo json_encode(['data' => "Nn deu bom1"]);

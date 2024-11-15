@@ -1,53 +1,70 @@
-*{ margin:0; padding:0;}
+* {
+  margin: 0;
+  padding: 0;
+}
 
-body{ font:100%; background:#ffffff; color: #000000;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
 
-form,input,select,textarea{margin:0; padding:0; color:#ffffff;}
-
-div.box {
-    margin:0 auto;
-    width:800px;
-    position:relative;
-    top:4em;
-    border-radius: 20px;
-    background-color: #E5E5E5;
-    box-shadow:
-    2px 8px 5px 0px rgba(0, 0, 0, 0.253),
+div.box_add {
+  margin: 0 auto;
+  width: 50%;
+  position: relative;
+  top: 4em;
+  border-radius: 20px;
+  background-color: #e5e5e5;
+  box-shadow: 2px 8px 5px 0px rgba(0, 0, 0, 0.253),
     -2px 3px 5px 0px rgba(0, 0, 0, 0.253);
-  
+  padding: 20px;
 }
 
-div.box h2 {
-    color:#000000;
-    font-size:18px;
-    text-transform:uppercase;
-    padding:5px 0 5px 5px;
+div.box_add form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
-div.box label {
-    color: black;
-    width:50%;
-    border: 20px;
-    display: block;
-    color: black;
-    border-top:1px solid #ffffff;
-    border-bottom:1px solid #ffffff;
-    padding:10px 0 10px 0;
+div.box_add label {
+  color: black;
+  width: 100%;
+  display: block;
+  text-align: left;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  padding: 10px 0;
 }
 
-
-div.box .message{
-    height: 50px;
-    width:350px;
-    background:#F3701B;
-    border-radius: 20px;
-    color: white;
+div.box_add input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
-.link {
-    color: #F3701B;
+div.box_add .message {
+  height: 50px;
+  width: 50%;
+  background: #f3701b;
+  border-radius: 20px;
+  color: white;
 }
 
-p {
-    color: black;
+div.box_gerenciar {
+  padding-top: 10em;
+}
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.user-item {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 20px;
+  flex-wrap: wrap;
 }

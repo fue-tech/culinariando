@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,8 +23,8 @@
 <body>
 
     <nav id="nav"></nav>
-    <div class="box">
-        <form id="cadastro">
+    <div class="box_add">
+        <form id="cadastro" class="cadastro_add">
             <h2>CADASTRO DE USUÁRIO</h2>
             <label for="nome_cadastro">Nome: <br>
             <input type="text" id="nome_cadastro" name="nome_cadastro" required><br></label>
@@ -39,10 +39,10 @@
             <input type="password" id="confirmasenha" name="confirmasenha" required><br></label>
 
             <label for="cpf">CPF:<br>
-            <input type="text" id="cpf" name="cpf" required><br></label>
+            <input type="text" id="cpf" name="cpf" maxlength="11" required><br></label>
 
             <label for="telefone">Telefone:<br>
-            <input type="text" id="telefone" name="telefone" required><br></label>
+            <input type="text" id="telefone" name="telefone" maxlength="11" required><br></label>
             <br/>
             <label>Qual o seu gênero?
                 <select name="sexo" id="sexo" name="sexo" required>
@@ -52,12 +52,15 @@
                     <option value="Prefiro_nao">Prefiro não dizer</option>
                 </select><br/></label>
                 
-            <button class="message" type="button" onclick="create()">Cadastrar</button>
-
-            <p>Já tem uma conta? 
-                <a class="link" href="./login.html">Acessar</a>
-            </p>
+            <button class="message" type="button" id="button_cad" onclick="create()">Cadastrar</button>
         </form>
     </div>
     </div>
+    
+
+    <div class="box_gerenciar" id='listaRegistros'>
+        <div>Lista de usuarios</div>
+        <ul id="lista-user" class="user-list"></ul>
+
+   </div>
 </html>
