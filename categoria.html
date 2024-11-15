@@ -20,20 +20,11 @@
     <link rel="stylesheet" href="./html/css/header.css" />
     <link rel="stylesheet" href="./html/css/categoria.css" />
   </head>
-  
+
   <body>
     <nav id="nav"></nav>
 
     <div class="container">
-      <section class="search-wrapper">
-        <h2>Pesquisar Categoria</h2>
-        <input
-          type="text"
-          id="search"
-          onkeyup="searchCategory()"
-          placeholder="Pesquisar por nome..."
-        />
-      </section>
       <section class="form-wrapper">
         <h2>Adicionar Nova Categoria</h2>
         <form id="categoryForm">
@@ -52,8 +43,7 @@
               <th>Ações</th>
             </tr>
           </thead>
-          <tbody id="categoryTable">
-          </tbody>
+          <tbody id="categoryTable"></tbody>
         </table>
       </section>
     </div>
