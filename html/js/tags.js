@@ -19,7 +19,9 @@ async function addTag() {
 
     alert(result.data);
 
-    appendTag({ id: result.id, tag });
+    if (!result.data.includes("Erro")) {
+        window.location.reload()
+    }
 
     document.getElementById("nome-tag").value = "";
     hideModal();
@@ -60,6 +62,10 @@ async function deleteTag(id) {
 
     alert(result.data);
 
+    if (!result.data.includes("Erro")) {
+        window.location.reload()
+    }
+
     const tagElement = document.getElementById(`tag-item-${id}`);
     tagElement.remove();
   } catch (error) {
@@ -86,6 +92,10 @@ async function editTag(id) {
     const result = await response.json();
 
     alert(result.data);
+
+    if (!result.data.includes("Erro")) {
+        window.location.reload()
+    }
   } catch (error) {
     console.error(error);
     alert("Erro ao editar tag!");
@@ -94,10 +104,10 @@ async function editTag(id) {
 
 async function getTags() {
   try {
-    const response = await fetch(`${baseURL}/culinariando/php/tags/tags.php`);
+    const response = await fetch(`${baseURL}/culinariando/php/tags/tag.php`);
     const result = await response.json();
     const tags = result.data;
-
+console.log(tags)
     tags.forEach((tag) => {
       appendTag(tag);
     });
