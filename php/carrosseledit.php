@@ -30,6 +30,21 @@ function carregarCarrossel($conn) {
     echo json_encode(['data' => $carrossel]);
 }
 
+// Função para carregar um item específico do carrossel para edição
+function carregarCarrosselItem($conn, $id) {
+    $sql = "SELECT * FROM carrossel WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($row = $result->fetch_assoc()) {
+        echo json_encode(['data' => $row]);
+    } else {
+        echo json_encode(['data' => 'Item não encontrado']);
+    }
+}
+
 // Função para adicionar um novo item no carrossel
 function adicionarCarrossel($conn) {
     $data = json_decode(file_get_contents('php://input'), true);
@@ -67,6 +82,17 @@ function atualizarCarrossel($conn) {
 function excluirCarrossel($conn) {
     $id = $_GET['id'];
     
+    // Primeiro, exclua os registros relacionados na tabela receita_carrossel
+    $sqlDeleteAssociations = "DELETE FROM receita_carrossel WHERE id_carrossel = ?";
+    $stmtDeleteAssociations = $conn->prepare($sqlDeleteAssociations);
+    $stmtDeleteAssociations->bind_param("i", $id);
+    
+    if (!$stmtDeleteAssociations->execute()) {
+        echo json_encode(['data' => 'Erro ao excluir associações relacionadas']);
+        return;
+    }
+    
+    // Em seguida, exclua o item de carrossel
     $sql = "DELETE FROM carrossel WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $id);
@@ -82,7 +108,11 @@ function excluirCarrossel($conn) {
 switch ($request_method) {
     case 'GET':
         if (isset($_GET['id'])) {
-            excluirCarrossel($conn); // Exclusão de item do carrossel
+            if (isset($_GET['action']) && $_GET['action'] === 'delete') {
+                excluirCarrossel($conn); // Exclusão de item do carrossel
+            } else {
+                carregarCarrosselItem($conn, $_GET['id']); // Carregar item específico para edição
+            }
         } else {
             carregarCarrossel($conn); // Carregar todos os itens
         }

@@ -98,10 +98,14 @@ function editCarrossel(id) {
     .then(response => response.json())
     .then(data => {
         const carrossel = data.data;
-        carrosselNomeInput.value = carrossel.nome;
-        editingCarrosselId = id;
-        document.getElementById("modalTitle").textContent = "Editar Carrossel";
-        modal.style.display = "flex";
+        if (carrossel && carrossel.nome) {
+            carrosselNomeInput.value = carrossel.nome;
+            editingCarrosselId = id;
+            document.getElementById("modalTitle").textContent = "Editar Carrossel";
+            modal.style.display = "flex";
+        } else {
+            alert("Erro ao carregar o item para edição.");
+        }
     });
 }
 
@@ -110,7 +114,7 @@ function deleteCarrossel(id) {
     const confirmDelete = confirm("Tem certeza que deseja excluir este carrossel?");
     
     if (confirmDelete) {
-        fetch(`/culinariando/php/carrosseledit.php?id=${id}`, {
+        fetch(`/culinariando/php/carrosseledit.php?id=${id}&action=delete`, {
             method: 'GET',
         })
         .then(response => response.json())
@@ -119,6 +123,7 @@ function deleteCarrossel(id) {
         });
     }
 }
+
 
 // Carregar carrossel ao carregar a página
 loadCarrossel();
