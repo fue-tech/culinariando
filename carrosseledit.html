@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-brs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nova receita</title>
+    <script src="./html/js/components/header.js" defer></script>
+    <script src="./html/js/carrosseledit.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./html/css/style.css" />
+    <link rel="stylesheet" href="./html/css/header.css" />
+    <link rel="stylesheet" href="./html/css/carrosseledit.css" />
+  </head>
+  <body>
+    <nav id="nav"></nav>
+    
+    <div class="container">
+      <h1>Gerenciar Carrossel de Receitas</h1>
+      <button id="btnAdicionar" class="btn">Adicionar ao Carrossel</button>
+
+      <div id="carrosselList" class="carrossel-list">
+          
+      </div>
+  </div>
+
+  
+  <div id="modal" class="modal">
+      <div class="modal-content">
+          <span id="closeModal" class="close">&times;</span>
+          <h2 id="modalTitle">Adicionar Carrossel</h2>
+          <form id="carrosselForm">
+              <label for="carrosselNome">Nome do Carrossel</label>
+              <input type="text" id="carrosselNome" name="carrosselNome" required>
+
+              <button type="submit" class="btn">Salvar</button>
+          </form>
+      </div>
+  </div>
+    
+  </body>
+</html>
