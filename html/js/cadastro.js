@@ -1,5 +1,6 @@
+const baseURL = "http://localhost";
+
 async function create() {
-	const baseURL = "http://localhost";
 	
 
     let nome_cadastro = document.getElementById("nome_cadastro").value;
@@ -26,6 +27,18 @@ async function create() {
         return;
     }
 
+    const regexTELEFONE = /^\(?\d{2}\)?[\s-]?\d{4,5}-?\d{4}$/;
+    if (!regexTELEFONE.test(telefone)){
+      alert("Número de telefone inválido.");
+      return;
+    }
+
+    const regexEMAIL = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!regexEMAIL.test(email_cadastro)) {
+      alert("E-mail inválido.");
+      return;
+    }
+
 	const body = {
         nome_cadastro,
         email_cadastro,
@@ -39,6 +52,9 @@ async function create() {
   try {
     const response = await fetch
         (`${baseURL}/culinariando/php/cadastro.php`,
+
+
+          
     {
 	    method: "POST",
         headers: {
@@ -51,8 +67,163 @@ async function create() {
       throw new Error("Erro ao buscar");
     }
 		
-    return response.json();
+    const result = await response.json();
+
+    if (result && result.data === "Usuário criado com sucesso!") {
+        alert("Usuário criado com sucesso!");
+        location.reload();
+    } else {
+        alert(result.data || "Erro ao criar usuário.");
+    }
+    
   } catch (error) {
     console.error(error);
+  }
+}
+
+
+function appendUser({ id, nome, telefone, sexo, email, senha}) {
+  const list = document.getElementById("lista-user");
+
+  const element = `
+    <div>
+      <li class="user-list">
+        <label> Nome
+        <input
+          type="text"
+          placeholder="${nome}"
+          value="${nome}"
+          id="user-nome-${id}"
+          class="user"
+        /></label>
+
+        <label> Email
+        <input 
+          type="text"
+          placeholder="${email}"
+          value="${email}"
+          id="user-email-${id}"
+          class="user"
+        /></label>
+
+        <label> Senha
+        <input 
+          type="text"
+          placeholder="${senha}"
+          value="${senha}"
+          id="user-senha-${id}"
+          class="user"
+        /></label>
+
+        <label> Telefone
+        <input
+          type="text"
+          placeholder="${telefone}"
+          value="${telefone}"
+          id="user-telefone-${id}"
+          class="user"
+        /></label>
+
+        <label>Sexo
+          <select name="sexo" id="sexo-${id}" required>
+              <option value="Masculino">Masculino</option>
+              <option value="Feminino">Feminino</option>
+              <option value="Outro">Outro</option>
+              <option value="Prefiro_nao">Prefiro não dizer</option>
+          </select><br/></label>
+        <div>
+          <button type="button" class="edit-user" id="${id}" onclick="editUser(${id})">Editar</button>
+          <button type="button" class="delete-user" id="${id}" onclick="deleteUser(${id})">Excluir</button>
+        </div>
+      </li>
+    </div>
+  `;
+
+  list.innerHTML += element;
+}
+
+async function GetUser() {
+	
+  try {
+    const response = await fetch(
+      `${baseURL}/culinariando/php/usuario.php`
+    );
+
+    const result = await response.json();
+
+    const usuario = result.data;
+
+    usuario.forEach((usuario) => {
+      appendUser(usuario);
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+window.document.addEventListener("DOMContentLoaded", GetUser);
+
+
+
+async function deleteUser(id) {
+  try {
+    const response = await fetch(
+      `${baseURL}/culinariando/php/remover-usuario.php?id=${id}`
+    );
+
+    const result = await response.json();
+    if (result.data === "Usuário excluído com sucesso!") {
+      alert(result.data);
+      location.reload();
+      const usuario = document.getElementById(`user-${id}`).parentElement;
+      usuario.remove();
+
+    } else {
+      alert(result.data || "Erro ao excluir usuário.");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Erro ao remover usuário!");
+  }
+}
+
+
+
+async function editUser(id) {
+  const nome = document.getElementById(`user-nome-${id}`).value;
+  const email = document.getElementById(`user-email-${id}`).value;
+  const senha = document.getElementById(`user-senha-${id}`).value;
+  const telefone = document.getElementById(`user-telefone-${id}`).value;
+  const sexo = document.getElementById(`sexo-${id}`).value;
+
+  if (!nome || !email || !senha || !telefone || !sexo) {
+    alert("Por favor, preencha todos os campos antes de editar.");
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `${baseURL}/culinariando/php/editar-usuario.php`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          nome,
+          email,
+          senha,
+          telefone,
+          sexo,
+          id
+        }),
+      }
+    );
+
+    const result = await response.json();
+    alert(result.data);
+    location.reload();
+  } catch (error) {
+    console.error(error);
+    alert("Erro ao editar usuario!");
   }
 }
