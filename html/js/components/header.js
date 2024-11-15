@@ -47,11 +47,11 @@ function header() {
       <div class="drawer" id="drawer">
         <ul class="drawer-menu">
           <li><a href="/culinariando">Início</a></li>
-          <li><a href="/culinariando/nova-receita.html">Nova receita</a></li>
+          <li><a href="/culinariando/receitas.html">Receitas</a></li>
           <li><a href="/culinariando/ingredientes.html">Ingredientes</a></li>
-          <li><a href="#">Carrossel</a></li>
+          <li><a href="/culinariando/carrosseledit.html">Carrossel</a></li>
           <li><a href="/culinariando/categoria.html">Categoria</a></li>
-          <li><a href="#">Tags</a></li>
+          <li><a href="/culinariando/tags.html">Tags</a></li>
         </ul>
       </div>
     </div>`;
