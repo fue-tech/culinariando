@@ -18,139 +18,37 @@
     />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/header.css" />
-    <style>
-      .tag-manager {
-        background-color: #f4f4f4;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 300px;
-        text-align: center;
-        margin: 20px auto;
-      }
-
-      .tag-manager h2 {
-        font-size: 1.2em;
-        margin-bottom: 15px;
-        color: #333;
-      }
-
-      .tag-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .tag-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
-      }
-
-      .tag-name {
-        font-size: 1em;
-        color: #333;
-        flex: 1;
-      }
-
-      .btn-delete {
-        background-color: red;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        padding: 5px 10px;
-        cursor: pointer;
-        font-size: 0.8em;
-        margin-left: 5px;
-      }
-
-      .btn-edit {
-        background-color: orange;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        padding: 5px 10px;
-        cursor: pointer;
-        font-size: 0.8em;
-      }
-
-      .add-tag-btn {
-        background-color: orange;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        padding: 10px;
-        font-size: 0.9em;
-        cursor: pointer;
-        width: 100%;
-        margin-top: 15px;
-      }
-
-      .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        justify-content: center;
-        align-items: center;
-      }
-
-      .modal-content {
-        background-color: #333;
-        padding: 20px;
-        border-radius: 8px;
-        width: 250px;
-        text-align: center;
-      }
-
-      .modal input[type="text"] {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 10px;
-        border-radius: 4px;
-        border: none;
-      }
-
-      .modal-btn {
-        background-color: orange;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        padding: 8px 10px;
-        font-size: 0.9em;
-        cursor: pointer;
-        margin: 5px;
-      }
-
-      .modal-btn.cancel {
-        background-color: #333;
-        color: orange;
-      }
-    </style>
+    <link rel="stylesheet" href="./css/tags.css" />
   </head>
   <body>
     <nav id="nav"></nav>
 
     <div class="tag-manager">
       <h2>GERENCIAR TAGS</h2>
-      <ul class="tag-list" id="lista-tags"></ul>
+      <div class="tag-list" id="lista-tags"></div>
       <button class="add-tag-btn" onclick="showTag()">ADICIONAR TAG</button>
     </div>
 
     <div class="modal" id="tagModal">
-      <div class="modal-content">
-        <input
-          type="text"
-          placeholder="Digite o nome da tag que deseja criar"
-          id="nome-tag"
-        />
-        <button class="modal-btn" onclick="addTag()">CONFIRMAR</button>
-        <button class="modal-btn cancel" onclick="hideTag()">CANCELAR</button>
-      </div>
+      <form class="modal-content">
+        <label for="nome-tag">Nome da tag</label>
+        <input type="text" placeholder="Digite o nome da tag" id="nome-tag" />
+        <label for="cor-tag">Cor da tag</label>
+        <input type="color" id="cor-tag" />
+        <label for="descricao-tag">Status</label>
+        <select id="status-tag">
+          <option value="Ativo">Ativo</option>
+          <option value="Inativo">Inativo</option>
+        </select>
+        <div>
+          <button class="modal-btn" type="button" onclick="addTag()">
+            CONFIRMAR
+          </button>
+          <button class="modal-btn cancel" type="button" onclick="hideTag()">
+            CANCELAR
+          </button>
+        </div>
+      </form>
     </div>
     <script>
       function showTag() {

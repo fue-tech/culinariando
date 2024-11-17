@@ -3,14 +3,16 @@ include('../connect.php');
 
 $dados = $_POST;
 
-$sql = 'UPDATE tags SET tag = ? WHERE id = ?';
+$sql = 'UPDATE tags SET tag = ?, cor = ?, status = ? WHERE id = ?';
 
 $tag = $dados["tag"];
+$cor = $dados["color"];
+$status = $dados["status"];
 $id = $dados["id"];
 
 if (!($conn->connect_error)){
     $stm = $conn->prepare($sql);
-    $stm->bind_param("si", $tag, $id);
+    $stm->bind_param("sssi", $tag, $cor, $status, $id);
 
     if ($stm->execute()){
         echo json_encode(['data' => 'Tag atualizada com sucesso']);
