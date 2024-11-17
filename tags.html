@@ -1,164 +1,165 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Título</title>
-  <script src="./html/js/components/header.js" defer></script>
-  <script src="./html/js/tags.js" defer></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
-  <link rel="stylesheet" href="./html/css/style.css" />
-  <link rel="stylesheet" href="./html/css/header.css" />
-  <style>
- 
-    .tag-manager {
-      background-color: #f4f4f4;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 300px;
-      text-align: center;
-      margin: 20px auto;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tags</title>
+    <script src="./html/js/components/header.js" defer></script>
+    <script src="./html/js/tags.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./html/css/style.css" />
+    <link rel="stylesheet" href="./html/css/header.css" />
+    <style>
+      .tag-manager {
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+        margin: 20px auto;
+      }
 
-    .tag-manager h2 {
-      font-size: 1.2em;
-      margin-bottom: 15px;
-      color: #333;
-    }
+      .tag-manager h2 {
+        font-size: 1.2em;
+        margin-bottom: 15px;
+        color: #333;
+      }
 
-    .tag-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
+      .tag-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
 
-    .tag-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
+      .tag-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
 
-    .tag-name {
-      font-size: 1em;
-      color: #333;
-      flex: 1;
-    }
+      .tag-name {
+        font-size: 1em;
+        color: #333;
+        flex: 1;
+      }
 
-    .btn-delete {
-      background-color: red;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 5px 10px;
-      cursor: pointer;
-      font-size: 0.8em;
-      margin-left: 5px;
-    }
+      .btn-delete {
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 0.8em;
+        margin-left: 5px;
+      }
 
-    .btn-edit {
-      background-color: orange;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 5px 10px;
-      cursor: pointer;
-      font-size: 0.8em;
-    }
+      .btn-edit {
+        background-color: orange;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 0.8em;
+      }
 
-    .add-tag-btn {
-      background-color: orange;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 10px;
-      font-size: 0.9em;
-      cursor: pointer;
-      width: 100%;
-      margin-top: 15px;
-    }
+      .add-tag-btn {
+        background-color: orange;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 10px;
+        font-size: 0.9em;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 15px;
+      }
 
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      justify-content: center;
-      align-items: center;
-    }
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+      }
 
-    .modal-content {
-      background-color: #333;
-      padding: 20px;
-      border-radius: 8px;
-      width: 250px;
-      text-align: center;
-    }
+      .modal-content {
+        background-color: #333;
+        padding: 20px;
+        border-radius: 8px;
+        width: 250px;
+        text-align: center;
+      }
 
-    .modal input[type="text"] {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 10px;
-      border-radius: 4px;
-      border: none;
-    }
+      .modal input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        border: none;
+      }
 
-    .modal-btn {
-      background-color: orange;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 8px 10px;
-      font-size: 0.9em;
-      cursor: pointer;
-      margin: 5px;
-    }
+      .modal-btn {
+        background-color: orange;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 8px 10px;
+        font-size: 0.9em;
+        cursor: pointer;
+        margin: 5px;
+      }
 
-    .modal-btn.cancel {
-      background-color: #333;
-      color: orange;
-    }
-  </style>
-</head>
-<body>
-  <nav id="nav"></nav>
+      .modal-btn.cancel {
+        background-color: #333;
+        color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <nav id="nav"></nav>
 
-  <div class="tag-manager">
-    <h2>GERENCIAR TAGS</h2>
-    <ul class="tag-list" id="lista-tags">
-
-    </ul>
-    <button class="add-tag-btn" onclick="showTag()">ADICIONAR TAG</button>
-  </div>
-
-  <div class="modal" id="tagModal">
-    <div class="modal-content">
-      <input type="text" placeholder="Digite o nome da tag que deseja criar" id="nome-tag" />
-      <button class="modal-btn" onclick="addTag()">CONFIRMAR</button>
-      <button class="modal-btn cancel" onclick="hideTag()">CANCELAR</button>
+    <div class="tag-manager">
+      <h2>GERENCIAR TAGS</h2>
+      <ul class="tag-list" id="lista-tags"></ul>
+      <button class="add-tag-btn" onclick="showTag()">ADICIONAR TAG</button>
     </div>
-  </div>
-  <script>
-    function showTag() {
-      document.getElementById("tagModal").style.display = "flex";
-    }
 
-    function hideTag() {
-      document.getElementById("tagModal").style.display = "none";
-    }
-  </script>
-</body>
+    <div class="modal" id="tagModal">
+      <div class="modal-content">
+        <input
+          type="text"
+          placeholder="Digite o nome da tag que deseja criar"
+          id="nome-tag"
+        />
+        <button class="modal-btn" onclick="addTag()">CONFIRMAR</button>
+        <button class="modal-btn cancel" onclick="hideTag()">CANCELAR</button>
+      </div>
+    </div>
+    <script>
+      function showTag() {
+        document.getElementById("tagModal").style.display = "flex";
+      }
+
+      function hideTag() {
+        document.getElementById("tagModal").style.display = "none";
+      }
+    </script>
+  </body>
 </html>
