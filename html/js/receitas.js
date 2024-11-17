@@ -172,7 +172,7 @@ function updateEditForm({
 function card({ id, nome, preparo, video, imagem, categoria, dificuldade }) {
   const element = `
     <div class="recipe-card">
-      <a href="/culinariando/receita.html?id=${id}" >
+      <a href="/culinariando/html/receita.html?id=${id}" >
         <img src="${imagem}" class="card-img" />
         <div class="card-footer">
           <p class="card-title">${nome}</p>

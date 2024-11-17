@@ -115,7 +115,7 @@ function carousel(data) {
 
 function card({ receita_id, receita, imagem, categoria, dificuldade }) {
   const element = `
-    <a href="/culinariando/receita.html?id=${receita_id}" class="card-wrapper">
+    <a href="/culinariando/html/receita.html?id=${receita_id}" class="card-wrapper">
       <img src="${imagem}" class="card-img" />
       <div class="card-footer">
         <p class="card-title">${receita}</p>
