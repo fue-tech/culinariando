@@ -84,7 +84,7 @@ async function create() {
   }
 }
 
-function appendUser({ id, nome, telefone, email, senha }) {
+function appendUser({ id, nome, telefone, email, sexo, senha }) {
   const list = document.getElementById("lista-user");
 
   const element = `
@@ -128,10 +128,15 @@ function appendUser({ id, nome, telefone, email, senha }) {
 
         <label>Sexo
           <select name="sexo" id="sexo-${id}" required>
-              <option value="Masculino">Masculino</option>
-              <option value="Feminino">Feminino</option>
-              <option value="Outro">Outro</option>
-              <option value="Prefiro_nao">Prefiro não dizer</option>
+              <option value="Masculino" ${
+                sexo === "Masculino" ? "selected" : ""
+              }>Masculino</option>
+              <option value="Feminino" ${
+                sexo === "Feminino" ? "selected" : ""
+              }>Feminino</option>
+              <option value="Outro" ${
+                sexo === "Outro" ? "selected" : ""
+              }>Outro</option>
           </select><br/></label>
           <button type="button" class="edit-btn" id="${id}" onclick="editUser(${id})">Editar</button>
           <button type="button" class="delete-btn" id="${id}" onclick="deleteUser(${id})">Excluir</button>
