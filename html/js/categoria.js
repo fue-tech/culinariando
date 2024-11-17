@@ -6,13 +6,16 @@ async function addCategory(event) {
   const nome = document.getElementById("categoryName").value;
 
   try {
-    const response = await fetch(`${baseURL}/culinariando/php/categoria.php`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({ categoryName: nome }),
-    });
+    const response = await fetch(
+      `${baseURL}/culinariando/php/categoria/categoria.php`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({ categoryName: nome }),
+      }
+    );
 
     const result = await response.json();
 
@@ -52,7 +55,7 @@ function appendCategory({ id, nome }) {
 async function deleteCategory(id) {
   try {
     const response = await fetch(
-      `${baseURL}/culinariando/php/remover-categoria.php?id=${id}`,
+      `${baseURL}/culinariando/php/categoria/remover-categoria.php?id=${id}`,
       {
         method: "DELETE",
       }
@@ -84,7 +87,7 @@ async function editCategory(id) {
 
   try {
     const response = await fetch(
-      `${baseURL}/culinariando/php/editar-categoria.php`,
+      `${baseURL}/culinariando/php/categoria/editar-categoria.php`,
       {
         method: "POST",
         headers: {
@@ -111,7 +114,9 @@ async function editCategory(id) {
 
 async function getCategories() {
   try {
-    const response = await fetch(`${baseURL}/culinariando/php/categoria.php`);
+    const response = await fetch(
+      `${baseURL}/culinariando/php/categoria/categoria.php`
+    );
     const result = await response.json();
 
     if (result.success && Array.isArray(result.data)) {

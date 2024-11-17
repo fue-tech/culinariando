@@ -1,15 +1,11 @@
 <?php
-// Incluindo o arquivo de conexão com o banco de dados
-include('connect.php');
+include('../connect.php');
 
-// Definindo o cabeçalho para o JSON
 header('Content-Type: application/json');
 
-// Verifica se o ID foi passado via GET
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 
-    // Verifica se o ID é um número válido
     if (!is_numeric($id)) {
         echo json_encode(['success' => false, 'message' => 'ID inválido']);
         exit;

@@ -1,13 +1,9 @@
 <?php
-// Incluindo o arquivo de conexão com o banco de dados
-include('connect.php');
+include('../connect.php');
 
-// Definindo o cabeçalho para o JSON
 header('Content-Type: application/json');
 
-// Verifica se a requisição é POST para criar categoria ou GET para listar
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Adicionando nova categoria
     $dados = $_POST;
     if (empty($dados['categoryName'])) {
         echo json_encode(['success' => false, 'message' => 'Nome da categoria é necessário']);
@@ -29,7 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stm->close();
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Listando todas as categorias
     $sql = "SELECT id, nome FROM categoria";
     $result = $conn->query($sql);
 
