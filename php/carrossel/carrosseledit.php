@@ -33,10 +33,12 @@ function carregarCarrosselItem($conn, $id) {
 function adicionarCarrossel($conn) {
     $data = json_decode(file_get_contents('php://input'), true);
     $nome = $data['nome'];
+    $tipo = $data['tipo'];
+    $descricao = $data['descricao'];
     
-    $sql = "INSERT INTO carrossel (nome) VALUES (?)";
+    $sql = "INSERT INTO carrossel (nome, tipo, descricao) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $nome);
+    $stmt->bind_param("sss", $nome, $tipo, $descricao);
     
     if ($stmt->execute()) {
         echo json_encode(['data' => 'Carrossel adicionado com sucesso']);
@@ -49,10 +51,12 @@ function atualizarCarrossel($conn) {
     $data = json_decode(file_get_contents('php://input'), true);
     $id = $data['id'];
     $nome = $data['nome'];
+    $tipo = $data['tipo'];
+    $descricao = $data['descricao'];
     
-    $sql = "UPDATE carrossel SET nome = ? WHERE id = ?";
+    $sql = "UPDATE carrossel SET nome = ?, tipo = ?, descricao = ? WHERE id = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("si", $nome, $id);
+    $stmt->bind_param("sssi", $nome, $tipo, $descricao, $id);
     
     if ($stmt->execute()) {
         echo json_encode(['data' => 'Carrossel atualizado com sucesso']);

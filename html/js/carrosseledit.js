@@ -4,6 +4,8 @@ const btnAdicionar = document.getElementById("btnAdicionar");
 const carrosselList = document.getElementById("carrosselList");
 const carrosselForm = document.getElementById("carrosselForm");
 const carrosselNomeInput = document.getElementById("carrosselNome");
+const carrosselTipoInput = document.getElementById("carrosselTipo");
+const carrosselDescricaoInput = document.getElementById("carrosselDesc");
 let editingCarrosselId = null;
 
 btnAdicionar.addEventListener("click", () => {
@@ -21,19 +23,26 @@ carrosselForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const carrosselNome = carrosselNomeInput.value;
+  const carrosselTipo = carrosselTipoInput.value;
+  const carrosselDescricao = carrosselDescricaoInput.value;
 
   if (editingCarrosselId) {
-    updateCarrossel(editingCarrosselId, carrosselNome);
+    updateCarrossel(
+      editingCarrosselId,
+      carrosselNome,
+      carrosselTipo,
+      carrosselDescricao
+    );
   } else {
-    addCarrossel(carrosselNome);
+    addCarrossel(carrosselNome, carrosselTipo, carrosselDescricao);
   }
 
   modal.style.display = "none";
 });
 
 // Adicionar carrossel
-function addCarrossel(nome) {
-  const data = { nome };
+function addCarrossel(nome, tipo, descricao) {
+  const data = { nome, tipo, descricao };
 
   fetch("/culinariando/php/carrossel/carrosseledit.php", {
     method: "POST",
@@ -49,8 +58,8 @@ function addCarrossel(nome) {
 }
 
 // Atualizar carrossel
-function updateCarrossel(id, nome) {
-  const data = { id, nome };
+function updateCarrossel(id, nome, tipo, descricao) {
+  const data = { id, nome, tipo, descricao };
 
   fetch("/culinariando/php/carrossel/carrosseledit.php", {
     method: "POST",
@@ -78,8 +87,10 @@ function loadCarrossel() {
         carrosselItem.classList.add("carrossel-item");
         carrosselItem.innerHTML = `
                 <h3>${item.nome}</h3>
-                <button onclick="editCarrossel(${item.id})">Editar</button>
-                <button onclick="deleteCarrossel(${item.id})">Excluir</button>
+                <p>${item.tipo}</p>
+                <p>${item.descricao}</p>
+                <button onclick="editCarrossel(${item.id})" class="edit-btn">Editar</button>
+                <button onclick="deleteCarrossel(${item.id})" class="delete-btn">Excluir</button>
             `;
         carrosselList.appendChild(carrosselItem);
       });
@@ -94,6 +105,8 @@ function editCarrossel(id) {
       const carrossel = data.data;
       if (carrossel && carrossel.nome) {
         carrosselNomeInput.value = carrossel.nome;
+        carrosselTipoInput.value = carrossel.tipo;
+        carrosselDescricaoInput.value = carrossel.descricao;
         editingCarrosselId = id;
         document.getElementById("modalTitle").textContent = "Editar Carrossel";
         modal.style.display = "flex";

@@ -34,10 +34,13 @@
       <div class="modal-content">
         <span id="closeModal" class="close">&times;</span>
         <h2 id="modalTitle">Adicionar Carrossel</h2>
-        <form id="carrosselForm">
+        <form id="carrosselForm" class="form">
           <label for="carrosselNome">Nome do Carrossel</label>
           <input type="text" id="carrosselNome" name="carrosselNome" required />
-
+          <label for="carrosselTip">Tipo</label>
+          <input type="text" id="carrosselTipo" name="carrosselTip" required />
+          <label for="carrosselDesc">Descrição</label>
+          <textarea id="carrosselDesc" name="carrosselDesc" required></textarea>
           <button type="submit" class="btn">Salvar</button>
         </form>
       </div>
