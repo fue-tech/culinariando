@@ -27,6 +27,7 @@
 
 .tag-item {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: end;
   margin-bottom: 10px;
