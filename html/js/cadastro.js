@@ -56,7 +56,7 @@ async function create() {
 
   try {
     const response = await fetch(
-      `${baseURL}/culinariando/php/cadastro.php`,
+      `${baseURL}/culinariando/php/cadastro/novo-usuario.php`,
 
       {
         method: "POST",
@@ -143,7 +143,9 @@ function appendUser({ id, nome, telefone, email, senha }) {
 
 async function GetUser() {
   try {
-    const response = await fetch(`${baseURL}/culinariando/php/usuario.php`);
+    const response = await fetch(
+      `${baseURL}/culinariando/php/cadastro/usuarios.php`
+    );
 
     const result = await response.json();
 
@@ -161,7 +163,7 @@ window.document.addEventListener("DOMContentLoaded", GetUser);
 async function deleteUser(id) {
   try {
     const response = await fetch(
-      `${baseURL}/culinariando/php/remover-usuario.php?id=${id}`
+      `${baseURL}/culinariando/php/cadastro/remover-usuario.php?id=${id}`
     );
 
     const result = await response.json();
@@ -191,7 +193,7 @@ async function editUser(id) {
 
   try {
     const response = await fetch(
-      `${baseURL}/culinariando/php/editar-usuario.php`,
+      `${baseURL}/culinariando/php/cadastro/editar-usuario.php`,
       {
         method: "POST",
         headers: {

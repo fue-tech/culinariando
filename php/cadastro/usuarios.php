@@ -1,5 +1,5 @@
 <?php
-include('connect.php');
+include('../connect.php');
 
 if (!($conn->connect_error)){
 	$sql = "SELECT * FROM usuario";

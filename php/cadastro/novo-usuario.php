@@ -1,5 +1,5 @@
 <?php
-include('connect.php');
+include('../connect.php');
 
 $dados = $_POST;
 $sql = 'INSERT INTO usuario (nome, cpf, telefone, senha, email, cargo, sexo)
