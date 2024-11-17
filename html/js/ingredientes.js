@@ -2,6 +2,8 @@ const baseURL = "http://localhost";
 
 async function addIngredient() {
   const nome = document.getElementById("nome-ingrediente").value;
+  const unidade = document.getElementById("unidade-ingrediente").value;
+  const quantidade = document.getElementById("quantidade-ingrediente").value;
 
   try {
     const response = await fetch(
@@ -11,7 +13,7 @@ async function addIngredient() {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: new URLSearchParams({ nome }),
+        body: new URLSearchParams({ nome, unidade, quantidade }),
       }
     );
 
@@ -28,23 +30,36 @@ async function addIngredient() {
   }
 }
 
-function appendIngredient({ id, nome }) {
+function appendIngredient({ id, nome, unidade, quantidade }) {
   const list = document.getElementById("lista-ingredientes");
 
   const element = `
-    <li class="ingredient-item">
+    <form class="ingredient-item">
       <input
         type="text"
         value="${nome}"
-        id="ingredient-${id}"
+        id="nome-${id}"
         maxlength="50"
         class="ingredient"
+      />
+      <input
+        type="text"
+        value="${unidade}"
+        id="unidade-${id}"
+        maxlength="20"
+        class="ingredient unit"
+      />
+      <input
+        type="number"
+        value="${quantidade}"
+        id="quantidade-${id}"
+        class="ingredient quantity"
       />
       <div>
         <button type="button" class="edit-btn" id="${id}" onclick="editIngredient(${id})">Editar</button>
         <button type="button" class="delete-btn" id="${id}" onclick="deleteIngredient(${id})">Excluir</button>
       </div>
-    </li>
+    </form>
   `;
 
   list.innerHTML += element;
@@ -70,7 +85,9 @@ async function deleteIngredient(id) {
 }
 
 async function editIngredient(id) {
-  const nome = document.getElementById(`ingredient-${id}`).value;
+  const nome = document.getElementById(`nome-${id}`).value;
+  const unidade = document.getElementById(`unidade-${id}`).value;
+  const quantidade = document.getElementById(`quantidade-${id}`).value;
 
   try {
     const response = await fetch(
@@ -80,7 +97,7 @@ async function editIngredient(id) {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: new URLSearchParams({ nome, id }),
+        body: new URLSearchParams({ nome, unidade, quantidade, id }),
       }
     );
 

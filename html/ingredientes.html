@@ -23,16 +23,18 @@
   <body>
     <nav id="nav"></nav>
     <div class="container">
-      <h2 class="title">Cadastrar ingredientes</h2>
-      <div class="new-ingredient-wrapper">
-        <div class="new-ingredient">
-          <label>Nome do ingrediente</label>
-          <input type="text" id="nome-ingrediente" maxlength="50" />
-        </div>
+      <h2 class="title">Cadastrar ingrediente</h2>
+      <form class="new-ingredient-wrapper">
+        <label>Nome</label>
+        <input type="text" id="nome-ingrediente" maxlength="50" />
+        <label>Unidade</label>
+        <input type="text" id="unidade-ingrediente" maxlength="20" />
+        <label>Quantidade</label>
+        <input type="number" id="quantidade-ingrediente" />
         <button type="button" onclick="addIngredient()">Adicionar</button>
-      </div>
+      </form>
       <h2 class="title">Lista de ingredientes</h2>
-      <ul id="lista-ingredientes" class="ingredient-list"></ul>
+      <div id="lista-ingredientes" class="ingredient-list"></div>
     </div>
   </body>
 </html>
