@@ -1,5 +1,5 @@
 <?php
-include('connect.php');
+include('../connect.php');
 
 $sql = "SELECT * FROM carrossel_receitas";
 $result = $conn->query($sql);

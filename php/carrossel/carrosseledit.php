@@ -1,23 +1,9 @@
 <?php
-include("connect.php");
-
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "culinariando";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-
-if ($conn->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
-}
+include("../connect.php");
 
 
 $request_method = $_SERVER["REQUEST_METHOD"];
 
-// Função para carregar todos os itens do carrossel
 function carregarCarrossel($conn) {
     $sql = "SELECT * FROM carrossel";
     $result = $conn->query($sql);
@@ -30,7 +16,6 @@ function carregarCarrossel($conn) {
     echo json_encode(['data' => $carrossel]);
 }
 
-// Função para carregar um item específico do carrossel para edição
 function carregarCarrosselItem($conn, $id) {
     $sql = "SELECT * FROM carrossel WHERE id = ?";
     $stmt = $conn->prepare($sql);
@@ -45,7 +30,6 @@ function carregarCarrosselItem($conn, $id) {
     }
 }
 
-// Função para adicionar um novo item no carrossel
 function adicionarCarrossel($conn) {
     $data = json_decode(file_get_contents('php://input'), true);
     $nome = $data['nome'];
@@ -61,7 +45,6 @@ function adicionarCarrossel($conn) {
     }
 }
 
-// Função para atualizar um item do carrossel
 function atualizarCarrossel($conn) {
     $data = json_decode(file_get_contents('php://input'), true);
     $id = $data['id'];
@@ -78,7 +61,6 @@ function atualizarCarrossel($conn) {
     }
 }
 
-// Função para excluir um item do carrossel
 function excluirCarrossel($conn) {
     $id = $_GET['id'];
     
@@ -104,26 +86,24 @@ function excluirCarrossel($conn) {
     }
 }
 
-// Roteamento de requisições
 switch ($request_method) {
     case 'GET':
         if (isset($_GET['id'])) {
             if (isset($_GET['action']) && $_GET['action'] === 'delete') {
-                excluirCarrossel($conn); // Exclusão de item do carrossel
+                excluirCarrossel($conn);
             } else {
-                carregarCarrosselItem($conn, $_GET['id']); // Carregar item específico para edição
+                carregarCarrosselItem($conn, $_GET['id']);
             }
         } else {
-            carregarCarrossel($conn); // Carregar todos os itens
+            carregarCarrossel($conn);
         }
         break;
     case 'POST':
-        // Adicionar ou atualizar carrossel
         $data = json_decode(file_get_contents('php://input'), true);
         if (isset($data['id'])) {
-            atualizarCarrossel($conn); // Atualizar carrossel
+            atualizarCarrossel($conn);
         } else {
-            adicionarCarrossel($conn); // Adicionar novo carrossel
+            adicionarCarrossel($conn);
         }
         break;
     default:

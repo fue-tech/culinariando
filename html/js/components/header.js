@@ -1,8 +1,6 @@
 function header() {
   const location = window.location.pathname.split("/culinariando").pop();
 
-  console.log("location", location);
-
   return `
     <div class="menu">
       <a href="/culinariando/" class="logo-wrapper">
