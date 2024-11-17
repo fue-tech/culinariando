@@ -50,7 +50,9 @@ function initializeCarousel(carouselWrapper) {
 
 async function getCards() {
   try {
-    const response = await fetch(`${baseURL}/culinariando/php/carousel.php`);
+    const response = await fetch(
+      `${baseURL}/culinariando/php/carrossel/carrossel.php`
+    );
 
     if (!response.ok) {
       throw new Error("Erro ao buscar o carrossel");
