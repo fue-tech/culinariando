@@ -4,6 +4,8 @@ async function addCategory(event) {
   event.preventDefault();
 
   const nome = document.getElementById("categoryName").value;
+  const tipo = document.getElementById("categoryType").value;
+  const popularidade = document.getElementById("categoryPopularity").value;
 
   try {
     const response = await fetch(
@@ -13,7 +15,11 @@ async function addCategory(event) {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: new URLSearchParams({ categoryName: nome }),
+        body: new URLSearchParams({
+          categoryName: nome,
+          categoryType: tipo,
+          categoryPopularity: popularidade,
+        }),
       }
     );
 
@@ -26,26 +32,25 @@ async function addCategory(event) {
 
     alert(result.data);
 
-    // if (!result.data.includes("Erro")) {
     window.location.reload();
-    // }
   } catch (error) {
     console.error("Erro ao criar categoria:", error);
     alert("Erro ao criar categoria!");
   }
 }
 
-function appendCategory({ id, nome }) {
+function appendCategory({ id, nome, tipo, popularidade }) {
   const table = document.getElementById("categoryTable");
 
   const row = document.createElement("tr");
   row.id = `category-${id}`;
   row.innerHTML = `
-    <td>${id}</td>
     <td>${nome}</td>
+    <td>${tipo}</td>
+    <td>${popularidade}</td>
     <td>
-      <button type="button" class="edit-cat" onclick="editCategory(${id})">Editar</button>
-      <button type="button" class="delete-cat" onclick="deleteCategory(${id})">Excluir</button>
+      <button type="button" class="edit-btn" onclick="editCategory(${id})">Editar</button>
+      <button type="button" class="delete-btn" onclick="deleteCategory(${id})">Excluir</button>
     </td>
   `;
 
@@ -85,6 +90,20 @@ async function editCategory(id) {
     return;
   }
 
+  const tipo = prompt("Digite o novo tipo da categoria:");
+
+  if (!tipo || tipo.trim() === "") {
+    alert("Por favor, insira um tipo válido.");
+    return;
+  }
+
+  const popularidade = prompt("Digite a nova popularidade da categoria:");
+
+  if (!popularidade || popularidade.trim() === "") {
+    alert("Por favor, insira uma popularidade válida.");
+    return;
+  }
+
   try {
     const response = await fetch(
       `${baseURL}/culinariando/php/categoria/editar-categoria.php`,
@@ -93,7 +112,7 @@ async function editCategory(id) {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: new URLSearchParams({ id, nome }),
+        body: new URLSearchParams({ id, nome, tipo, popularidade }),
       }
     );
 

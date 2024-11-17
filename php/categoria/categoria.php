@@ -11,10 +11,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $nome = $dados['categoryName'];
+    $tipo = $dados['categoryType'];
+    $popularidade = $dados['categoryPopularity'];
 
-    $sql = "INSERT INTO categoria (nome) VALUES (?)";
+    $sql = "INSERT INTO categoria (nome, tipo, popularidade) VALUES (?, ?, ?)";
     $stm = $conn->prepare($sql);
-    $stm->bind_param("s", $nome);
+    $stm->bind_param("ssi", $nome, $tipo, $popularidade);
 
     if ($stm->execute()) {
         $id = $stm->insert_id;
@@ -25,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stm->close();
 } elseif ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $sql = "SELECT id, nome FROM categoria";
+    $sql = "SELECT * FROM categoria";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {

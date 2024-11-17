@@ -30,7 +30,8 @@ label {
   color: #555;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="number"] {
   width: 100%;
   padding: 10px;
   margin-top: 5px;
@@ -56,20 +57,16 @@ input[type="text"] {
   background-color: #ffaf0e;
 }
 
-.btn-delete {
-  background-color: #e74c3c;
-}
-
-.btn-delete:hover {
-  background-color: #c0392b;
-}
-
 .search-container {
   margin-bottom: 20px;
 }
 
 .search-container input {
   width: 300px;
+}
+
+.table-wrapper {
+  margin-top: 30px;
 }
 
 table {

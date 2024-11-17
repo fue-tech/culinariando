@@ -26,20 +26,30 @@
 
     <div class="container">
       <section class="form-wrapper">
-        <h2>Adicionar Nova Categoria</h2>
+        <h2>Cadastrar categoria</h2>
         <form id="categoryForm">
-          <label for="categoryName">Nome da Categoria:</label>
+          <label for="categoryName">Nome:</label>
           <input type="text" id="categoryName" name="categoryName" required />
-          <button type="submit" class="btn">Adicionar Categoria</button>
+          <label for="categoryType">Tipo:</label>
+          <input type="text" id="categoryType" name="categoryType" required />
+          <label for="categoryPopularity">Popularidade:</label>
+          <input
+            type="number"
+            id="categoryPopularity"
+            name="categoryPopularity"
+            required
+          />
+          <button type="submit" class="btn">Adicionar categoria</button>
         </form>
       </section>
       <section class="table-wrapper">
-        <h2>Lista de Categorias</h2>
+        <h2>Lista de categorias</h2>
         <table>
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nome da Categoria</th>
+              <th>Nome</th>
+              <th>Tipo</th>
+              <th>Popularidade</th>
               <th>Ações</th>
             </tr>
           </thead>
