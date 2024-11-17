@@ -1,31 +1,37 @@
 function header() {
+  const location = window.location.pathname.split("/culinariando").pop();
+
+  console.log("location", location);
+
   return `
     <div class="menu">
       <a href="/culinariando/" class="logo-wrapper">
-        <img src="./html/img/logo.png" alt="Logo do site" class="logo" />
+        <img src="${
+          location === "/" ? "./html/img/logo.png" : "./img/logo.png"
+        }" alt="Logo do site" class="logo" />
       </a>
       <ul class="menu-itens text-secondary">
         <li>
           <a href="/culinariando" class="menu-item">Início</a>
         </li>
         <li>
-          <a href="/culinariando/receitas.html" class="menu-item">Receitas</a>
+          <a href="/culinariando/html/receitas.html" class="menu-item">Receitas</a>
         </li>
         <li>
-          <a href="/culinariando/ingredientes.html" class="menu-item">Ingredientes</a>
+          <a href="/culinariando/html/ingredientes.html" class="menu-item">Ingredientes</a>
         </li>
         <li>
-          <a href="/culinariando/carrosseledit.html" class="menu-item">Carrossel</a>
+          <a href="/culinariando/html/carrossel.html" class="menu-item">Carrossel</a>
         </li>
         <li>
-          <a href="/culinariando/categoria.html" class="menu-item">Categoria</a>
+          <a href="/culinariando/html/categoria.html" class="menu-item">Categoria</a>
         </li>
         <li>
-          <a href="/culinariando/tags.html" class="menu-item">Tags</a>
+          <a href="/culinariando/html/tags.html" class="menu-item">Tags</a>
         </li>
       </ul>
       <div class="welcome">
-        <a href="/culinariando/cadastro.html">
+        <a href="/culinariando/html/cadastro.html">
           <svg width="35px" height="35px" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M8 7C9.65685 7 11 5.65685 11 4C11 2.34315 9.65685 1 8 1C6.34315 1 5 2.34315 5 4C5 5.65685 6.34315 7 8 7Z" fill="#fff" />
             <path d="M14 12C14 10.3431 12.6569 9 11 9H5C3.34315 9 2 10.3431 2 12V15H14V12Z" fill="#fff" />
@@ -34,7 +40,7 @@ function header() {
         <div class="welcome-text">
           <p>Bem vindo,</p>
           <p>
-            realize o <a href="/culinariando/cadastro.html">cadastro</a> ou faça o
+            realize o <a href="/culinariando/html/cadastro.html">cadastro</a> ou faça o
             <a href="#">login</a>
           </p>
         </div>
@@ -47,11 +53,11 @@ function header() {
       <div class="drawer" id="drawer">
         <ul class="drawer-menu">
           <li><a href="/culinariando">Início</a></li>
-          <li><a href="/culinariando/receitas.html">Receitas</a></li>
-          <li><a href="/culinariando/ingredientes.html">Ingredientes</a></li>
-          <li><a href="/culinariando/carrosseledit.html">Carrossel</a></li>
-          <li><a href="/culinariando/categoria.html">Categoria</a></li>
-          <li><a href="/culinariando/tags.html">Tags</a></li>
+          <li><a href="/culinariando/html/receitas.html">Receitas</a></li>
+          <li><a href="/culinariando/html/ingredientes.html">Ingredientes</a></li>
+          <li><a href="/culinariando/html/carrossel.html">Carrossel</a></li>
+          <li><a href="/culinariando/html/categoria.html">Categoria</a></li>
+          <li><a href="/culinariando/html/tags.html">Tags</a></li>
         </ul>
       </div>
     </div>`;
